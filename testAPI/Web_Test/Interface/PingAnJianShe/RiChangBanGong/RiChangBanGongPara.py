@@ -1,0 +1,1001 @@
+# -*- coding:UTF-8 -*-
+
+'''
+Created on 2015-12-22
+
+@author: chenyan
+'''
+from __future__ import unicode_literals
+from COMMON import Time
+from CONFIG import InitDefaultPara
+from Interface.PingAnJianShe.Common.CommonIntf import getDbQueryResult
+
+workingRecordObject = {
+               "mode":"",
+               "from":"",
+               "newWorkingRecords.organization.id":"",
+               "newWorkingRecords.id":"", 
+               "fileType":"",              
+               "newWorkingRecords.RECORDTYPE.id":"",
+               "newWorkingRecords.dailyDirectory.id":"",
+               "newWorkingRecords.departmentType.id":"",                         
+               "newWorkingRecords.name":"",
+               "newWorkingRecords.dealDate":"", 
+               "newWorkingRecords.proceedSite":"",
+               "newWorkingRecords.participant":"",
+               "selectedTypes":"",
+               "newWorkingRecords.content":"",
+               "documentId":""
+               }
+
+getRecordDict= {
+                "newWorkingRecordVo.organization.id":"",
+                "newWorkingRecordVo.dailyDirectoryId":"",
+                "newWorkingRecordVo.hasAttach":"-1",
+                "newWorkingRecordVo.displayLevel":"true",
+                "_search":"false",
+                "rows":"1000",
+                "page":"1",
+                "sidx":"id",
+                "sord":"desc",            
+                }
+
+deleteRecordDict={
+                 "ids":''
+                 }
+
+transferRecordDict={
+                 "ids":"",
+                 "transferDirectoryId":""
+                 }
+
+copyRecordDict={
+                 "ids":"",
+                 "toWorkingDirectoryId":""
+                 }
+
+checkRecordDict={
+                 "name":None,
+                 "id":None,
+                 }
+
+
+myProfileObject = {
+               "isSubmit":"",
+               "myProfile.resourcePoolType.id":"",
+               "mode":"",
+               "myProfile.id":"", 
+               "myProfile.name":"",              
+               "myProfile.releaseUnit":"",
+               "myProfile.releaseTime":"",
+               "myProfile.fileNo":"",                         
+               "myProfile.documentSubject":"",
+               "myProfile.content":"", 
+               "orgIds":"",
+               "attachFileUrls":""
+               }
+
+getProfileDict= {
+                "resourcePoolTypeId":"",
+                "searchType":"0",
+                "_search":"false",
+                "rows":"1000",
+                "page":"1",
+                "sidx":"id",
+                "sord":"desc",            
+                }
+
+searchProfileObject = {
+                       "resourcePoolType.id":"",
+                       "searchType":"0",
+                       "myProfile.name":"",              
+                       "myProfile.releaseUnit":"",
+                       "startReleaseTime":"",
+                       "myProfile.releaseTime":"",
+                       "startCreateTime":"",
+                       "myProfile.createDate":"",
+                       "myProfile.fileNo":"",                         
+                       "myProfile.documentSubject":"",
+                       "myProfile.content":"", 
+                       "myProfile.source":"",
+                       }
+
+deleteProfileDict={
+                 "ids":''
+                 }
+
+cacheObject = {
+               "viewObjectVo.selectedCheckBoxStrs":"",
+               "viewObjectVo.selectedIdStrs":"",
+               "viewObjectVo.exclusiveIdStrs":"",              
+               "viewObjectVo.provinceNum":"",
+               "viewObjectVo.cityNum":"",
+               "viewObjectVo.districtNum":"",
+               "viewObjectVo.townNum":"",
+               "viewObjectVo.unitedVillageNum":"",
+               "viewObjectVo.villageNum":"",
+               "viewObjectVo.gridNum":"",
+               "viewObjectVo.provinceFucDepartmentNum":"",
+               "viewObjectVo.cityFucDepartmentNum":"",
+               "viewObjectVo.districtFucDepartmentNum":"",
+               "viewObjectVo.townFucDepartmentNum":"",
+               "viewObjectVo.defProvinceNum":"",
+               "viewObjectVo.defCityNum":"",
+               "viewObjectVo.defDistrictNum":"",
+               "viewObjectVo.defTownNum":"",
+               "viewObjectVo.defUnitedVillageNum":"",
+               "viewObjectVo.defVillageNum":"",
+               "viewObjectVo.defProvinceFucDepartmentNum":"",
+               "viewObjectVo.defCityFucDepartmentNum":"",
+               "viewObjectVo.defDistrictFucDepartmentNum":"",
+               "viewObjectVo.defTownFucDepartmentNum":"",
+               "viewObjectVo.selectedRadio":"",
+               "viewObjectVo.id":""
+               }
+
+shareProfileDict={
+                 "ids":'',
+                 "resourcePoolTypeId":"",
+                 "sendMessage":"",
+                 "identification":"",
+                 "setPermissionCacheId":"",
+                 "setPermissionText":"",
+                 "Message":""
+                 }
+
+checkProfileDict={
+                 "name":None,
+                 "id":None,
+                 }
+
+documentObject = {
+               "mode":"",
+               "document.dispatchState":"", 
+               "document.id":"",              
+               "sendOptrionalObjIds":"",
+               "copySendOptrionalObjIds":"",
+               "document.title":"",                         
+               "document.dispatchUnit":"",
+               "document.documentNo":"", 
+               "document.urgentDegree.id":"",
+               "document.theme":"",
+               "document.contents":"",
+               "beforeSendOptrionalObjIds":"",
+               "beforeCopySendOptrionalObjIds":"",
+               }
+
+getDocumentDict= {
+                "document.signState":"",
+                "_search":"false",
+                "rows":"1000",
+                "page":"1",
+                "sidx":"",
+                "sord":"desc",            
+                }
+
+searchDocumentDict= {
+                "searchDocumentVo.dispatchState":"",
+                "searchDocumentVo.title":"",
+                "searchDocumentVo.documentNo":"",
+                "searchDocumentVo.secretDegree.id":"",
+                "searchDocumentVo.theme":"",
+                "searchDocumentVo.urgentDegree.id":"",
+                "searchDocumentVo.createDateStart":"",
+                "searchDocumentVo.createDateEnd":"",
+                "searchDocumentVo.contents":"",
+                "_search":"false",
+                "rows":"1000",
+                "page":"1",
+                "sidx":"createDate",
+                "sord":"desc",            
+                }
+
+searchShouWenDict= {
+                "searchDocumentVo.signState":"",
+                "searchDocumentVo.title":"",
+                "searchDocumentVo.documentNo":"",
+                "searchDocumentVo.secretDegree.id":"",
+                "searchDocumentVo.theme":"",
+                "searchDocumentVo.urgentDegree.id":"",
+                "searchDocumentVo.signDateStart":"",
+                "searchDocumentVo.signDateEnd":"",
+                "searchDocumentVo.contents":"",
+                }
+
+readDict= {
+           "mode":"",
+           "document.id":"",
+           "document.documentsHasOrgId":""
+           }
+
+documentDict= {
+                "mode":"",
+                "selectedIds":""
+                }
+
+receiveDocumentDict= {
+                "selectedIds":"",
+                "documentsHasOrg.signDate":"",
+                "documentsHasOrg.signer":"",
+                "documentsHasOrg.receiptContent":""
+                }
+
+
+deleteDict={
+            "deleteIds":''
+            }
+
+checkDocumentDict={
+                 "title":None,
+                 "id":None,
+                 }
+
+searchGongWenDict= {
+                    "searchDocumentVo.createYear":"",
+                    "searchDocumentVo.title":"",
+                    "searchDocumentVo.documentNo":"",
+                    "searchDocumentVo.secretDegree.id":"",
+                    "searchDocumentVo.theme":"",
+                    "searchDocumentVo.urgentDegree.id":"",
+                    "searchDocumentVo.contents":"",
+                    }
+
+delete={
+        "selectedIds":''
+        }
+
+logManageObject = {
+               "mode":"",
+               "peopleLog.id":"",              
+               "isSubmit":"",
+               "peopleLog.isAttachment":"",
+               "peopleLog.belonger":"",                         
+               "peopleLog.publishDate":"",
+               "peopleLog.address":"", 
+               "peopleLog.title":"",
+               "peopleLog.contents":"",
+               "document.contents":"",
+               "peopleLog.summary":"",
+               }
+
+searchLogManageDict= {
+                    "isComment":"false",
+                    "searchPeopleLogVo.startDate":"",
+                    "searchPeopleLogVo.endDate":"",
+                    "searchPeopleLogVo.belonger":"",
+                    "searchPeopleLogVo.sumCommentMin":"",
+                    "searchPeopleLogVo.sumCommentMax":"",
+                    "searchPeopleLogVo.title":"",
+                    "searchPeopleLogVo.address":"",
+                    "searchPeopleLogVo.commentLog.commentUser":"",
+                    "searchPeopleLogVo.commentLog.comments":"",
+                    "_search":"false",
+                    "rows":"1000",
+                    "page":"1",
+                    "sidx":"id",
+                    "sord":"desc",            
+                    }
+
+deleteLogManageDict= {
+                    "logIds":""        
+                    }
+
+getLogManageDict= {
+                "isComment":"false",
+                "_search":"false",
+                "rows":"1000",
+                "page":"1",
+                "sidx":"id",
+                "sord":"desc",            
+                }
+
+checkLogManageDict={
+                 "id":None,
+                 "title":None,
+                 "commentNums":None
+                 }
+
+saveCommentDict={
+                 "logId":"",
+                 "comment.comments":""
+                 }
+
+getCommentManageDict= {
+                        "_search":"false",
+                        "rows":"1000",
+                        "page":"1",
+                        "sidx":"id",
+                        "sord":"desc",            
+                        }
+
+checkCommentManageDict={
+                         "id":None,
+                         "logId":None,
+                         "comments":None
+                         }
+
+searchLogManageDict= {
+                    "searchPeopleLogVo.isPeer":"",
+                    "orgId":"",
+                    "isPeer":"",
+                    "searchPeopleLogVo.commentStartDate":"",
+                    "searchPeopleLogVo.commentEndDate":"",
+                    "searchPeopleLogVo.startDate":"",
+                    "searchPeopleLogVo.endDate":"",
+                    "searchPeopleLogVo.belonger":"",
+                    "searchPeopleLogVo.sumCommentMin":"",
+                    "searchPeopleLogVo.sumCommentMax":"",
+                    "searchPeopleLogVo.title":"",
+                    "searchPeopleLogVo.address":"",
+                    "searchPeopleLogVo.commentLog.commentUser":"",
+                    "searchPeopleLogVo.commentLog.comments":"",
+                    "_search":"false",
+                    "rows":"1000",
+                    "page":"1",
+                    "sidx":"id",
+                    "sord":"desc",            
+                    }
+
+
+dailyObject = {
+               "mode":"",
+               "workDiary.id":"",              
+               "workDiary.organization.id":"",
+               "workDiary.workUserName":"",
+               "workDiary.diaryType.id":"",                         
+               "workDiary.workTime":"",
+               "workDiary.workPlace":"", 
+               "workDiary.workContent":"",
+               }
+
+deleteObject = {
+               "mode":"",
+               "selectedIds":""             
+               }
+
+searchDiaryObject = {
+                   "searchWorkDiaryVo.organization.id":"",
+                   "searchWorkDiaryVo.workUser":"",
+                   "searchWorkDiaryVo.workPlace":"",
+                   "searchWorkDiaryVo.diaryType":"",
+                   "searchWorkDiaryVo.workTimeStart":"",
+                   "searchWorkDiaryVo.workTimeEnd":"",
+                   "searchChild":"false",
+                   "searchWorkDiaryVo.workContent":"",
+                   "_search":"false",
+                   "rows":"1000",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc",
+                   }
+
+getDiaryDict= {
+                "organization.id":"",
+                "searchChild":"false",
+                "_search":"false",
+                "rows":"1000",
+                "page":"1",
+                "sidx":"id",
+                "sord":"desc",            
+                }
+
+checkDiaryDict={
+                 "id":None,
+                 "workPlace":None
+                 }
+
+
+
+#矛盾纠纷排查报表记录新增参数
+confictRptRecordPara={
+                'conflictRpt.totalPc':'',
+                'conflictRpt.idJP':'alizedDetection_Y',
+                'conflictRpt.yearTotalPc':'',
+                'conflictRpt.totalCl':'',
+                'conflictRpt.yearTotalCl':'',
+                'conflictRpt.totalTc':'',
+                'conflictRpt.yearTotalTc':'',
+                'conflictRpt.totalSuccNum':'',
+                'conflictRpt.yearTotalSuccNum':'',
+                'conflictRptDatasList[0].investigationNum':'',
+                'conflictRptDatasList[0].idJP':'mzzj',
+                'conflictRptDatasList[0].yearNumPc':'',
+                'conflictRptDatasList[0].successNum':'',
+                'conflictRptDatasList[0].yearNumSucc':'',
+                'conflictRptDatasList[1].investigationNum':'',
+                'conflictRptDatasList[1].idJP':'jzgbfytwjr',
+                'conflictRptDatasList[1].yearNumPc':'',
+                'conflictRptDatasList[1].successNum':'',
+                'conflictRptDatasList[1].yearNumSucc':'',
+                'conflictRptDatasList[2].investigationNum':'',
+                'conflictRptDatasList[2].idJP':'zdcqaz',
+                'conflictRptDatasList[2].yearNumPc':'',
+                'conflictRptDatasList[2].successNum':'',
+                'conflictRptDatasList[2].yearNumSucc':'',
+                'conflictRptDatasList[3].investigationNum':'',
+                'conflictRptDatasList[3].idJP':'jzgczlwygl',
+                'conflictRptDatasList[3].yearNumPc':'',
+                'conflictRptDatasList[3].successNum':'',
+                'conflictRptDatasList[3].yearNumSucc':'',
+                'conflictRptDatasList[4].investigationNum':'',
+                'conflictRptDatasList[4].idJP':'tdkcslsljx',
+                'conflictRptDatasList[4].yearNumPc':'',
+                'conflictRptDatasList[4].successNum':'',
+                'conflictRptDatasList[4].yearNumSucc':'',
+                'conflictRptDatasList[5].investigationNum':'',
+                'conflictRptDatasList[5].idJP':'jjhd',
+                'conflictRptDatasList[5].yearNumPc':'',
+                'conflictRptDatasList[5].successNum':'',
+                'conflictRptDatasList[5].yearNumSucc':'',
+                'conflictRptDatasList[6].investigationNum':'',
+                'conflictRptDatasList[6].idJP':'lzjf',
+                'conflictRptDatasList[6].yearNumPc':'',
+                'conflictRptDatasList[6].successNum':'',
+                'conflictRptDatasList[6].yearNumSucc':'',
+                'conflictRptDatasList[7].investigationNum':'',
+                'conflictRptDatasList[7].idJP':'qygz',
+                'conflictRptDatasList[7].yearNumPc':'',
+                'conflictRptDatasList[7].successNum':'',
+                'conflictRptDatasList[7].yearNumSucc':'',
+                'conflictRptDatasList[8].investigationNum':'',
+                'conflictRptDatasList[8].idJP':'hjwrstph',
+                'conflictRptDatasList[8].yearNumPc':'',
+                'conflictRptDatasList[8].successNum':'',
+                'conflictRptDatasList[8].yearNumSucc':'',
+                'conflictRptDatasList[9].investigationNum':'',
+                'conflictRptDatasList[9].idJP':'sfhd',
+                'conflictRptDatasList[9].yearNumPc':'',
+                'conflictRptDatasList[9].successNum':'',
+                'conflictRptDatasList[9].yearNumSucc':'',
+                'conflictRptDatasList[10].investigationNum':'',
+                'conflictRptDatasList[10].idJP':'xzzfhd',
+                'conflictRptDatasList[10].yearNumPc':'',
+                'conflictRptDatasList[10].successNum':'',
+                'conflictRptDatasList[10].yearNumSucc':'',
+                'conflictRptDatasList[11].investigationNum':'',
+                'conflictRptDatasList[11].idJP':'dzzyxzxxx',
+                'conflictRptDatasList[11].yearNumPc':'',
+                'conflictRptDatasList[11].successNum':'',
+                'conflictRptDatasList[11].yearNumSucc':'',
+                'conflictRptDatasList[12].investigationNum':'',
+                'conflictRptDatasList[12].idJP':'hsys',
+                'conflictRptDatasList[12].yearNumPc':'',
+                'conflictRptDatasList[12].successNum':'',
+                'conflictRptDatasList[12].yearNumSucc':'',
+                'conflictRptDatasList[13].investigationNum':'',
+                'conflictRptDatasList[13].idJP':'gbzf',
+                'conflictRptDatasList[13].yearNumPc':'',
+                'conflictRptDatasList[13].successNum':'',
+                'conflictRptDatasList[13].yearNumSucc':'',
+                'conflictRptDatasList[14].investigationNum':'',
+                'conflictRptDatasList[14].idJP':'csqjwgl',
+                'conflictRptDatasList[14].yearNumPc':'',
+                'conflictRptDatasList[14].successNum':'',
+                'conflictRptDatasList[14].yearNumSucc':'',
+                'conflictRptDatasList[15].investigationNum':'',
+                'conflictRptDatasList[15].idJP':'nctdcbncjt',
+                'conflictRptDatasList[15].yearNumPc':'',
+                'conflictRptDatasList[15].successNum':'',
+                'conflictRptDatasList[15].yearNumSucc':'',
+                'conflictRptDatasList[16].investigationNum':'',
+                'conflictRptDatasList[16].idJP':'hyjtll',
+                'conflictRptDatasList[16].yearNumPc':'',
+                'conflictRptDatasList[16].successNum':'',
+                'conflictRptDatasList[16].yearNumSucc':'',
+                'conflictRptDatasList[17].investigationNum':'',
+                'conflictRptDatasList[17].idJP':'yhjf',
+                'conflictRptDatasList[17].yearNumPc':'',
+                'conflictRptDatasList[17].successNum':'',
+                'conflictRptDatasList[17].yearNumSucc':'',
+                'conflictRptDatasList[18].investigationNum':'',
+                'conflictRptDatasList[18].idJP':'qt',
+                'conflictRptDatasList[18].yearNumPc':'',
+                'conflictRptDatasList[18].successNum':'',
+                'conflictRptDatasList[18].yearNumSucc':'',
+                'conflictRpt.numInFifty':'',
+                'conflictRpt.yearNumInFifty':'',
+                'conflictRpt.numFiftyToHunder':'',
+                'conflictRpt.yearNumFiftyToHunder':'',
+                'conflictRpt.numHunderToFiveHunder':'',
+                'conflictRpt.yearNumHunderToFiveHunder':'',
+                'conflictRpt.numMoreThanFiveHunder':'',
+                'conflictRpt.yearNumMoreThanFiveHunder':'',
+                'conflictRptDatasList[19].investigationNum':'',
+                'conflictRptDatasList[19].idJP':'Impt',
+                'conflictRptDatasList[19].yearNumPc':'',
+                'conflictRptDatasList[19].inventoryNum':'',
+                'conflictRptDatasList[19].yearNumCl':'',
+                'conflictRptDatasList[19].mediationNum':'',
+                'conflictRptDatasList[19].yearNumTc':'',
+                'conflictRptDatasList[19].successNum':'',
+                'conflictRptDatasList[19].yearNumSucc':'',
+                'conflictRpt.centralizedDetection':'',
+                'conflictRpt.yearCentralizedDetection':'',
+                'dailyDirectory.id':'',
+                'dailyYear.id':'',
+                'organization.id':InitDefaultPara.orgInit['DftSheQuOrgId'],
+                'dataValidate':'0',
+                'reportName':'2016年1月测试自动化社区矛盾纠纷排查情况表',
+                'dealPerson':'',
+                'lister':'',
+                'reportTime':'1',
+                'year':'2016',
+                'reportTypeInternalId':'1',
+                'isSubmit':'0',
+                'conflictRpt.id':'',     
+                       }
+#矛盾纠纷普通排查报表记录新增参数,拥有社区默认数据
+confictRptRecordPara1={
+                'conflictRpt.totalPc':'190',
+                'conflictRpt.idJP':'alizedDetection_Y',
+                'conflictRpt.yearTotalPc':'190',
+                'conflictRpt.totalCl':'0',
+                'conflictRpt.yearTotalCl':'0',
+                'conflictRpt.totalTc':'190',
+                'conflictRpt.yearTotalTc':'190',
+                'conflictRpt.totalSuccNum':'190',
+                'conflictRpt.yearTotalSuccNum':'190',
+                'conflictRptDatasList[0].investigationNum':'1',
+                'conflictRptDatasList[0].idJP':'mzzj',
+                'conflictRptDatasList[0].yearNumPc':'1',
+                'conflictRptDatasList[0].successNum':'1',
+                'conflictRptDatasList[0].yearNumSucc':'1',
+                'conflictRptDatasList[1].investigationNum':'2',
+                'conflictRptDatasList[1].idJP':'jzgbfytwjr',
+                'conflictRptDatasList[1].yearNumPc':'2',
+                'conflictRptDatasList[1].successNum':'2',
+                'conflictRptDatasList[1].yearNumSucc':'2',
+                'conflictRptDatasList[2].investigationNum':'3',
+                'conflictRptDatasList[2].idJP':'zdcqaz',
+                'conflictRptDatasList[2].yearNumPc':'3',
+                'conflictRptDatasList[2].successNum':'3',
+                'conflictRptDatasList[2].yearNumSucc':'3',
+                'conflictRptDatasList[3].investigationNum':'4',
+                'conflictRptDatasList[3].idJP':'jzgczlwygl',
+                'conflictRptDatasList[3].yearNumPc':'4',
+                'conflictRptDatasList[3].successNum':'4',
+                'conflictRptDatasList[3].yearNumSucc':'4',
+                'conflictRptDatasList[4].investigationNum':'5',
+                'conflictRptDatasList[4].idJP':'tdkcslsljx',
+                'conflictRptDatasList[4].yearNumPc':'5',
+                'conflictRptDatasList[4].successNum':'5',
+                'conflictRptDatasList[4].yearNumSucc':'5',
+                'conflictRptDatasList[5].investigationNum':'6',
+                'conflictRptDatasList[5].idJP':'jjhd',
+                'conflictRptDatasList[5].yearNumPc':'6',
+                'conflictRptDatasList[5].successNum':'6',
+                'conflictRptDatasList[5].yearNumSucc':'6',
+                'conflictRptDatasList[6].investigationNum':'7',
+                'conflictRptDatasList[6].idJP':'lzjf',
+                'conflictRptDatasList[6].yearNumPc':'7',
+                'conflictRptDatasList[6].successNum':'7',
+                'conflictRptDatasList[6].yearNumSucc':'7',
+                'conflictRptDatasList[7].investigationNum':'8',
+                'conflictRptDatasList[7].idJP':'qygz',
+                'conflictRptDatasList[7].yearNumPc':'8',
+                'conflictRptDatasList[7].successNum':'8',
+                'conflictRptDatasList[7].yearNumSucc':'8',
+                'conflictRptDatasList[8].investigationNum':'9',
+                'conflictRptDatasList[8].idJP':'hjwrstph',
+                'conflictRptDatasList[8].yearNumPc':'9',
+                'conflictRptDatasList[8].successNum':'9',
+                'conflictRptDatasList[8].yearNumSucc':'9',
+                'conflictRptDatasList[9].investigationNum':'10',
+                'conflictRptDatasList[9].idJP':'sfhd',
+                'conflictRptDatasList[9].yearNumPc':'10',
+                'conflictRptDatasList[9].successNum':'10',
+                'conflictRptDatasList[9].yearNumSucc':'10',
+                'conflictRptDatasList[10].investigationNum':'11',
+                'conflictRptDatasList[10].idJP':'xzzfhd',
+                'conflictRptDatasList[10].yearNumPc':'11',
+                'conflictRptDatasList[10].successNum':'11',
+                'conflictRptDatasList[10].yearNumSucc':'11',
+                'conflictRptDatasList[11].investigationNum':'12',
+                'conflictRptDatasList[11].idJP':'dzzyxzxxx',
+                'conflictRptDatasList[11].yearNumPc':'12',
+                'conflictRptDatasList[11].successNum':'12',
+                'conflictRptDatasList[11].yearNumSucc':'12',
+                'conflictRptDatasList[12].investigationNum':'13',
+                'conflictRptDatasList[12].idJP':'hsys',
+                'conflictRptDatasList[12].yearNumPc':'13',
+                'conflictRptDatasList[12].successNum':'13',
+                'conflictRptDatasList[12].yearNumSucc':'13',
+                'conflictRptDatasList[13].investigationNum':'14',
+                'conflictRptDatasList[13].idJP':'gbzf',
+                'conflictRptDatasList[13].yearNumPc':'14',
+                'conflictRptDatasList[13].successNum':'14',
+                'conflictRptDatasList[13].yearNumSucc':'14',
+                'conflictRptDatasList[14].investigationNum':'15',
+                'conflictRptDatasList[14].idJP':'csqjwgl',
+                'conflictRptDatasList[14].yearNumPc':'15',
+                'conflictRptDatasList[14].successNum':'15',
+                'conflictRptDatasList[14].yearNumSucc':'15',
+                'conflictRptDatasList[15].investigationNum':'16',
+                'conflictRptDatasList[15].idJP':'nctdcbncjt',
+                'conflictRptDatasList[15].yearNumPc':'16',
+                'conflictRptDatasList[15].successNum':'16',
+                'conflictRptDatasList[15].yearNumSucc':'16',
+                'conflictRptDatasList[16].investigationNum':'17',
+                'conflictRptDatasList[16].idJP':'hyjtll',
+                'conflictRptDatasList[16].yearNumPc':'17',
+                'conflictRptDatasList[16].successNum':'17',
+                'conflictRptDatasList[16].yearNumSucc':'17',
+                'conflictRptDatasList[17].investigationNum':'18',
+                'conflictRptDatasList[17].idJP':'yhjf',
+                'conflictRptDatasList[17].yearNumPc':'18',
+                'conflictRptDatasList[17].successNum':'18',
+                'conflictRptDatasList[17].yearNumSucc':'18',
+                'conflictRptDatasList[18].investigationNum':'19',
+                'conflictRptDatasList[18].idJP':'qt',
+                'conflictRptDatasList[18].yearNumPc':'19',
+                'conflictRptDatasList[18].successNum':'19',
+                'conflictRptDatasList[18].yearNumSucc':'19',
+                'conflictRpt.numInFifty':'10',
+                'conflictRpt.yearNumInFifty':'10',
+                'conflictRpt.numFiftyToHunder':'20',
+                'conflictRpt.yearNumFiftyToHunder':'20',
+                'conflictRpt.numHunderToFiveHunder':'30',
+                'conflictRpt.yearNumHunderToFiveHunder':'30',
+                'conflictRpt.numMoreThanFiveHunder':'130',
+                'conflictRpt.yearNumMoreThanFiveHunder':'130',
+                'conflictRptDatasList[19].investigationNum':'0',
+                'conflictRptDatasList[19].idJP':'Impt',
+                'conflictRptDatasList[19].yearNumPc':'0',
+                'conflictRptDatasList[19].inventoryNum':'0',
+                'conflictRptDatasList[19].yearNumCl':'0',
+                'conflictRptDatasList[19].mediationNum':'0',
+                'conflictRptDatasList[19].yearNumTc':'3',
+                'conflictRptDatasList[19].successNum':'0',
+                'conflictRptDatasList[19].yearNumSucc':'0',
+                'conflictRpt.centralizedDetection':'10',
+                'conflictRpt.yearCentralizedDetection':'10',
+                'dailyDirectory.id':'',
+                'dailyYear.id':'',
+                'organization.id':InitDefaultPara.orgInit['DftSheQuOrgId'],
+                'dataValidate':'0',#什么意思
+                'reportName':'2016年1月测试自动化社区矛盾纠纷排查情况表',
+                'dealPerson':'aaa',
+                'lister':'bbb',
+                'reportTime':'1',
+                'year':'2016',
+                'reportTypeInternalId':'1',#表示月报，目前只剩下月报了
+                'isSubmit':'0',
+                'conflictRpt.id':'',
+                      }
+#矛盾纠纷记录列表参数
+confictRptRecordListPara={
+            'conflictRpt.organization.id':'',
+            'conflictRpt.newDailyDirectoryId':'',
+            'yearDate':'',
+            'reportTypeInternalId':'1',
+            '_search':'false',
+            'rows':'20',
+            'page':'1',
+            'sidx':'id',
+            'sord':'desc'
+                  }
+#记录表查看参数
+confictRptRecordViewPara={
+            'dailyDirectory.id':'',
+            'reportTime':'',
+            'organization.id':'',
+            'dailyYear.yearDate':'',
+            'reportTypeInternalId':'1',
+            'conflictRpt.id':'',             
+                          }
+#矛盾纠纷排查记录表新增检查参数
+confictRptRecordCheckPara={
+           'dailyYearId':'',
+           'newDailyDirectoryId':'',
+           'name':''                  
+                           }
+#矛盾纠纷排查记录删除参数
+confictRptRecordDelPara={
+           'conflictRpt.id':'',
+           'reportTypeInternalId':'',            
+                         }
+#矛盾纠纷排查记录列表参数
+confictRptRecordListPara={
+            'conflictRpt.organization.id':'',
+            'conflictRpt.newDailyDirectoryId':'',
+            'yearDate':'',
+            'reportTypeInternalId':'1',
+            '_search':'false',
+            'rows':'200',
+            'page':'1',
+            'sidx':'id',
+            'sord':'desc',            
+                          }
+#普通矛盾纠纷报表新增参数
+conflictRptNormalPara={
+            'conflictRptNormal.id':'',
+            'conflictRptNormal.createorgcode':'',
+            'yearDate':'',
+            'reportTime':'',
+            'conflictRptNormal.orgName':'',
+            'conflictRptNormal.name':'',
+            'conflictRptNormal.state':'',
+            'conflictRptNormal.recorddate':'2016-01-02',
+            'conflictRptNormal.dealdate':'2016-01-21',
+            'selectedTypes':'1',
+            'conflictRptNormal.departmentandperson':''              
+                       }
+#普通矛盾纠纷报表新增参数,包含默认社区参数
+conflictRptNormalPara1={
+            'conflictRptNormal.id':'',
+            'conflictRptNormal.createorgcode':'',
+            'yearDate':'2016',
+            'reportTime':'1',
+            'conflictRptNormal.orgName':'测试自动化区->测试自动化街道->测试自动化社区',
+            'conflictRptNormal.name':'事项',
+            'conflictRptNormal.state':'1',
+            'conflictRptNormal.recorddate':'2016-01-02',
+            'conflictRptNormal.dealdate':'2016-01-21',
+            'selectedTypes':1,
+            'conflictRptNormal.departmentandperson':'责任单位及负责人'              
+                       }
+#普通矛盾纠纷排查报表删除参数
+conflictRptNormalDelPara={
+            'ids':'',
+            'yearDate':'',
+            'reportTime':'',
+                          }
+#普通矛盾纠纷报表检查参数
+conflictRptNormalCheckPara={
+            'dealdate': '',
+            'departmentandperson': "",
+            'name': "",
+            'recorddate': "",
+            'typeName': ""
+  }
+#普通矛盾纠纷报表列表参数
+conflictRptNormalListPara={
+            'confilictState':'3',#3全部，0存量，1新增，2化解
+            'yearDate':'2016',
+            'reportTime':'1',
+            'orgId':InitDefaultPara.orgInit['DftSheQuOrgId'],
+            '_search':'false',
+            'rows':'200',
+            'page':'1',
+            'sidx':'id',
+            'sord':'desc'                  
+                           }
+#普通矛盾纠纷报表导入参数
+conflictRptNormalImportData={
+            'dataType':'CONFILICTRPTNORMAL',
+            'templates':'CONFILICTRPTNORMAL_KEY',
+            'startRow':'3',
+            'enterpriseType':'',
+            'isNew':'1',
+            'reportTime':'1',
+            'yearDate':'2016',      
+                             }
+
+#重大矛盾纠纷报表新增参数
+conflictRptImptPara={
+                'mode':'',
+                'conflictRptImpt.org.id':InitDefaultPara.orgInit['DftSheQuOrgId'],
+                'conflictRptImpt.id':'',
+                'conflictRptImpt.orgInternalCode':'',
+                'isSubmit':'',
+                'yearDate':'',
+                'reportTime':'1',
+                'conflictRptImpt.basicSituation':'',
+                'conflictRptImpt.status':'',
+                'conflictRptImpt.involveSituation':'',
+                'conflictRptImpt.disputesType':'',
+                'conflictRptImpt.ondutyTarget':'',
+                'conflictRptImpt.workingMeasure':'',
+                'conflictRptImpt.developSituation':'',
+                     }
+#重大矛盾纠纷报表新增参数,社区新增默认参数
+
+conflictRptImptPara1={
+                'mode':'add',
+                'conflictRptImpt.org.id':InitDefaultPara.orgInit['DftSheQuOrgId'],
+                'conflictRptImpt.id':'',
+                'conflictRptImpt.orgInternalCode':getDbQueryResult(dbCommand = "select orginternalcode from organizations o where o.orgname='%s'"%InitDefaultPara.orgInit['DftSheQuOrg']),#'.2.2.2.3.3.',
+                'isSubmit':'',
+                'yearDate':'2016',
+                'reportTime':'1',
+                'conflictRptImpt.basicSituation':'基本情况',
+                'conflictRptImpt.status':'0',
+                'conflictRptImpt.involveSituation':'所涉群体及人数',
+                'conflictRptImpt.disputesType':'类型',
+                'conflictRptImpt.ondutyTarget':'责任单位及责任人',
+                'conflictRptImpt.workingMeasure':'工作措施',
+                'conflictRptImpt.developSituation':'进展情况',
+                     }
+#重大矛盾纠纷排查报表检查参数
+conflictRptImptCheckPara={
+                'basicSituation': "",
+                'developSituation': "",
+                'disputesType': "",
+                'involveSituation': "",
+                'ondutyTarget': "",
+                'workingMeasure': "",
+                          }
+#重大矛盾纠纷报表清单列表参数
+conflictRptImptListPara={
+                'conflictRptImpt.status':'',#''代表全部，0存量，1新增，2化解
+                'orgId':InitDefaultPara.orgInit['DftSheQuOrgId'],
+                'yearDate':'',
+                'reportTime':'',
+                '_search':'false',
+                'rows':'200',
+                'page':'1',
+                'sidx':'id',
+                'sord':'desc',          
+                         }
+#重大矛盾纠纷排查报表删除参数
+conflictRptImptDelPara={
+            'strIds':'',
+            'yearDate':'',
+            'reportTime':'',
+                          }
+#重大矛盾纠纷报表导入参数
+conflictRptImptImportData={
+            'dataType':'CONFLICTRPTIMPT',
+            'templates':'CONFLICTRPTIMPT_KEY',
+            'startRow':'3',
+            'enterpriseType':'',
+            'isNew':'1',
+            'reportTime':'1',
+            'yearDate':'2016',      
+                             }
+#重大矛盾纠纷数据统计请求参数
+conflictImptDataCountPara={
+            'reportTime':'1',
+            'dailyYear.yearDate':'2016', 
+            'organization.id':InitDefaultPara.orgInit['DftSheQuOrgId'],
+            'conflictRpt.id':'',
+            'mode':'view'
+                           }
+#社会治安重点地区排查整治清单新增参数
+socialSecurityAddPara={
+            'mode':'add',
+            'keyAreasOfInvestigationInfo.id':'',
+            'dailyDirectory.id':'',
+            'keyAreasOfInvestigationInfo.areaName':'',
+            'keyAreasOfInvestigationInfo.investigationDate':'',
+            'keyAreasOfInvestigationInfo.warningOrListing':'',
+            'keyAreasOfInvestigationInfo.mainProblem':'',
+            'keyAreasOfInvestigationInfo.policiesAndMeasures':'',
+            'keyAreasOfInvestigationInfo.remark':'',
+}
+#社会治安重点地区排查整治清单新增默认参数
+socialSecurityAddPara1={
+            'mode':'add',
+            'keyAreasOfInvestigationInfo.id':'',
+            'dailyDirectory.id':'',#getDbQueryResult(dbCommand ="select id from newdailyDirectorys d where d.dailyyearid='%s' and d.shortname='月报'"%rptRecdPara['dailyYear.id'],
+            'keyAreasOfInvestigationInfo.areaName':'地区名称',
+            'keyAreasOfInvestigationInfo.investigationDate':Time.getCurrentDate(),
+            'keyAreasOfInvestigationInfo.warningOrListing':'',
+            'keyAreasOfInvestigationInfo.mainProblem':'主要问题',
+            'keyAreasOfInvestigationInfo.policiesAndMeasures':'对策与措施',
+            'keyAreasOfInvestigationInfo.remark':'',
+}
+#社会治安重点地区排查整治清单列表参数
+socialSecurityListPara={
+            'dailyDirectory.id':'',
+            'organization.id':'',
+            'yearDate':'2016',
+            '_search':'false',
+            'rows':'200',
+            'page':'1',
+            'sidx':'id',
+            'sord':'desc',
+}
+
+#社会治安重点地区排查整治季报
+socialSecurityReportAddPara={
+            'dailyDirectory.id':'',
+            'dailyYear.id':'',
+            'societyInvestigationRemediation.name':'',
+            'societyInvestigationRemediation.lister':'',
+            'societyInvestigationRemediation.dealPerson':'',
+            'societyInvestigationRemediation.reportTime':'1',
+            'societyInvestigationRemediation.investigationSum':'0',
+            'societyInvestigationRemediation.investigationProvince':'0',
+            'societyInvestigationRemediation.investigationCity':'0',
+            'societyInvestigationRemediation.investigationDistrict':'0',
+            'societyInvestigationRemediation.investigationFindSum':'0',
+            'societyInvestigationRemediation.investigationFindDistrict':'0',
+            'societyInvestigationRemediation.investigationFindTown':'0',
+            'societyInvestigationRemediation.investigationFindVillage':'0',
+            'societyInvestigationRemediation.investigationFindOther':'0',
+            'societyInvestigationRemediation.alreadyRenovateSum':'0',
+            'societyInvestigationRemediation.alreadyRenovateCounty':'0',
+            'societyInvestigationRemediation.alreadyRenovateStreet':'0',
+            'societyInvestigationRemediation.alreadyRenovateVillage':'0',
+            'societyInvestigationRemediation.alreadyRenovateOther':'0',
+            'societyInvestigationRemediation.nowRenovateSum':'0',
+            'societyInvestigationRemediation.nowRenovateStreet':'0',
+            'societyInvestigationRemediation.nowRenovateVillage':'0',
+            'societyInvestigationRemediation.nowRenovateOther':'0',
+            'societyInvestigationRemediation.strikeCrackedSum':'0',
+            'societyInvestigationRemediation.strikeViolence':'0',
+            'societyInvestigationRemediation.strikeRob':'0',
+            'societyInvestigationRemediation.strikePoison':'0',
+            'societyInvestigationRemediation.strikeGangdom':'0',
+            'societyInvestigationRemediation.strikeDadness':'0',
+            'societyInvestigationRemediation.policeStarting':'0',
+            'societyInvestigationRemediation.policeSum':'0',
+            'societyInvestigationRemediation.cautionSum':'0',
+            'societyInvestigationRemediation.cautionCity':'0',
+            'societyInvestigationRemediation.cautionLand':'0',
+            'societyInvestigationRemediation.cautionCounty':'0',
+            'societyInvestigationRemediation.brandSum':'0',
+            'societyInvestigationRemediation.brandCity':'0',
+            'societyInvestigationRemediation.brandLand':'0',
+            'societyInvestigationRemediation.brandCounty':'0',
+            }
+#社会治安重点地区排查整治季报默认参数
+socialSecurityReportAddPara1={
+            'dailyDirectory.id':'',
+            'dailyYear.id':'',
+            'societyInvestigationRemediation.name':'',                 
+            'societyInvestigationRemediation.lister':'bbb',
+            'societyInvestigationRemediation.dealPerson':'aaa',
+            'societyInvestigationRemediation.reportTime':'1',
+            'societyInvestigationRemediation.investigationSum':'3',
+            'societyInvestigationRemediation.investigationProvince':'1',
+            'societyInvestigationRemediation.investigationCity':'2',
+            'societyInvestigationRemediation.investigationDistrict':'3',
+            'societyInvestigationRemediation.investigationFindSum':'10',
+            'societyInvestigationRemediation.investigationFindDistrict':'1',
+            'societyInvestigationRemediation.investigationFindTown':'2',
+            'societyInvestigationRemediation.investigationFindVillage':'3',
+            'societyInvestigationRemediation.investigationFindOther':'4',
+            'societyInvestigationRemediation.alreadyRenovateSum':'10',
+            'societyInvestigationRemediation.alreadyRenovateCounty':'1',
+            'societyInvestigationRemediation.alreadyRenovateStreet':'2',
+            'societyInvestigationRemediation.alreadyRenovateVillage':'3',
+            'societyInvestigationRemediation.alreadyRenovateOther':'4',
+            'societyInvestigationRemediation.nowRenovateSum':'10',
+            'societyInvestigationRemediation.nowRenovateCounty':'1',
+            'societyInvestigationRemediation.nowRenovateStreet':'2',
+            'societyInvestigationRemediation.nowRenovateVillage':'3',
+            'societyInvestigationRemediation.nowRenovateOther':'4',
+            'societyInvestigationRemediation.strikeCrackedSum':'1',
+            'societyInvestigationRemediation.strikeViolence':'2',
+            'societyInvestigationRemediation.strikeRob':'3',
+            'societyInvestigationRemediation.strikePoison':'4',
+            'societyInvestigationRemediation.strikeGangdom':'5',
+            'societyInvestigationRemediation.strikeDadness':'6',
+            'societyInvestigationRemediation.policeStarting':'1',
+            'societyInvestigationRemediation.policeSum':'2',
+            'societyInvestigationRemediation.cautionSum':'6',
+            'societyInvestigationRemediation.cautionCity':'1',
+            'societyInvestigationRemediation.cautionLand':'2',
+            'societyInvestigationRemediation.cautionCounty':'3',
+            'societyInvestigationRemediation.brandSum':'6',
+            'societyInvestigationRemediation.brandCity':'1',
+            'societyInvestigationRemediation.brandLand':'2',
+            'societyInvestigationRemediation.brandCounty':'3',       
+                }
+#社会治安重点地区排查整治季报列表参数
+socialSecurityReportListPara={
+            'rows':200,
+            'page':1,
+            'sidx':'id',
+            'sord':'desc',
+            'dailyDirectoryId':'',
+            'organization.id':InitDefaultPara.orgInit['DftSheQuOrgId']
+                              }
+#社会治安重点地区排查整治季报上报参数
+socialSecurityReportReportPara={
+            'societyInvestigationRemediation.id':'',
+            'societyInvestigationRemediation.dailyDirectory.id':''                 
+                              }
+
+#社会治安重点地区排查整治季报回退参数
+socialSecurityReportReportPara={
+            'mode':'society',
+            'dailyLogId':'',
+            'dailyDirectoryId':'',
+            'organization.id':InitDefaultPara.orgInit['DftJieDaoOrgId'],
+            'orgId':InitDefaultPara.orgInit['DftSheQuOrgId'],
+            'platformMessage.title':'2016年第一季度测试自动化社区社会治安重点地区排查整治工作情况表退回提醒！',
+            'platformMessage.content':'回退原因'
+                                }

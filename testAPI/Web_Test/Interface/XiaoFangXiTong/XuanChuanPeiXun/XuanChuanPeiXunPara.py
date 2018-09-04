@@ -1,0 +1,180 @@
+# -*- coding:UTF-8 -*-
+'''
+Created on 2016-6-13
+
+@author: N-66
+'''
+AddPeiXunHuoDong={
+                  'fireTrainingInfo.trainingNo':'',#20160616536383236
+                  'fireTrainingInfo.name':'',#培训名称1111
+                  'fireTrainingInfo.trainingDate':'',
+                  'fireTrainingInfo.trainingAmount':'',
+                  'fireTrainingInfo.location':'',
+                  'fireTrainingInfo.trainingManager':'',
+                  'fireTrainingInfo.trainingDeptCharge':'',
+                  'fireTrainingInfo.recordPerson':'',
+                  'fireTrainingInfo.content':'',
+                  'attachfilefullpath':'',
+                  'attachfileNamelist':'',
+                  'attachfileIdlist':'',
+                  'fireTrainingInfo.memo':'',
+                  'fireTrainingInfo.fireTrainingInfoId':'',
+                  'fireTrainingCompany':'',#41_zh_zh_13111111111
+                  'fireTrainingInfo.trainingType':''
+                  }
+GetPeiXunHuoDong={
+                  'orgId':'',
+                  'fireTrainingInfo.trainingType':'',
+                  '_search':'false',
+                  # nd:1465798187287
+                  'rows':'80',
+                  'page':'1',
+                  'sidx':'id',
+                  'sord':'desc'
+                  # _:1465798187288
+                  }   
+PeiXunHuoDong={                    
+               'fireTrainingInfoId':'',
+               'name':''
+               }
+EditPeiXunHuoDong={
+                  'fireTrainingInfo.trainingNo':'',#20160616536383236
+                  'fireTrainingInfo.name':'',#培训名称1111
+                  'fireTrainingInfo.trainingDate':'',
+                  'fireTrainingInfo.trainingAmount':'',
+                  'fireTrainingInfo.location':'',
+                  'fireTrainingInfo.trainingManager':'',
+                  'fireTrainingInfo.trainingDeptCharge':'',
+                  'fireTrainingInfo.recordPerson':'',
+                  'fireTrainingInfo.content':'',
+                  'attachfilefullpath':'',
+                  'attachfileNamelist':'',
+                  'attachfileIdlist':'',
+                  'fireTrainingInfo.memo':'',
+                  'fireTrainingInfo.fireTrainingInfoId':'',#203
+                  'fireTrainingCompany':'',#41_zh_zh_13111111111
+                  'fireTrainingInfo.trainingType':''
+                  }       
+DelPeiXunHuoDong={
+                  'fireTrainingInfoId':''
+                  }      
+AddXuanChuanHuoDong={
+                    'firePublicInfo.title':'',#12313
+                   'firePublicInfo.publicDate':'',#2016-06-01
+                    'firePublicInfo.address':'',#培训地点
+                     'firePublicInfo.hostUnit':'',#主办单位
+                    'firePublicInfo.organizeUser':'',#组织人
+                    'firePublicInfo.participantsNumber':'',
+                    'firePublicInfo.dataNumber':'',
+                    'firePublicInfo.posterNumber':'',
+                     'firePublicInfo.publicContent':'',
+                     'attachfilefullpath':'',
+                     'attachfileNamelist':'',
+                     'attachfileIdlist':'',
+                      'operateMode':'',
+                     'firePublicInfo.firePublicInfoId':'',
+                     'firePublicCompany':''#undefined_123123214234234_234234234234_1123123123123
+                     }    
+GetXuanChuanHuoDong={
+                     'orgId':'',#414
+                     '_search':'false',
+                     #nd:1465888169715
+                     'rows':'80',
+                     'page':'1',
+                     'idx':'id',
+                     'sord':'desc'
+                     }
+XuanChuanHuoDong={
+                  'title':'',
+                  'firePublicInfoId':''
+                  }
+EditXuanChuanHuoDong={
+                           'firePublicInfo.title':'',#宣传活动名称12344234
+                           'firePublicInfo.publicDate':'',#2016-06-14
+                           'firePublicInfo.address':'',#培训地点1
+                           'firePublicInfo.hostUnit':'',#主办地点1
+                           'firePublicInfo.organizeUser':'',#组织人1
+                           'firePublicInfo.participantsNumber':'',
+                           'firePublicInfo.dataNumber':'',
+                           'firePublicInfo.posterNumber':'',
+                           'firePublicInfo.publicContent':'',
+                           'attachfilefullpath':'',
+                           'attachfileNamelist':'',
+                           'attachfileIdlist':'',
+                           'operateMode':'update',
+                           'firePublicInfo.firePublicInfoId':'',#143
+                           'firePublicCompany':'',#143_测试单位手动添加1_负责人手动1_13976545454
+                           }
+DelXuanChuanHuoDong={
+                     'firePublicInfoId':''
+                     }
+AddXueXiZiLiao={
+                'fireNotice.title':'',#标题啊
+                'fireNotice.noticeFrom':'',
+                'attachfilefullpath':'',
+                'attachfileNamelist':'',
+                'attachfileIdlist':'',
+                'fireNotice.content':'',
+                'signDeptIds':'',#414
+                'fireNotice.signCompanyIds':'',
+                'fireNotice.createDeptName':'',#测试自动化社区
+                'fireNotice.createDept':'',#413
+                'fireNotice.createUserName':'',#自动化社区用户
+                'fireNotice.createUser':'',#zdhsq@
+                'fireNotice.noticeType':'',#1
+                'mode':'view',
+                'fireNotice.fireNoticeId':'',
+                }
+GetXueXiZiLiao={
+                'orgId':'',#413
+                'fireNotice.noticeType':'1',
+                'queryParameter.orgId':'',#413
+                '_search':'false',
+                 # nd:1465898449266
+                'rows':'80',
+                'page':'1',
+                'sidx':'id',
+                'sord':'desc'
+                }
+XueXiZiLiao={
+             'simpleTitle':'',
+             'fireNoticeId':''
+             }
+EditXueXiZiLiao={
+                 'fireNotice.title':'',#学习sdas 
+                 'fireNotice.noticeFrom':'',
+                 'attachfilefullpath':'',
+                 'attachfileNamelist':'',
+                 'attachfileIdlist':'',
+                 'fireNotice.content':'',
+                 'signDeptIds':'',#414,413,413,414,
+                 'fireNotice.signCompanyIds':'',
+                 'fireNotice.createDeptName':'',#测试自动化社区
+                 'fireNotice.createDept':'',#413
+                 'fireNotice.createUserName':'',#自动化社区用户
+                 'fireNotice.createUser':'',#zdhsq@
+                 'fireNotice.noticeType':'',#1
+                 'mode':'edit',
+                 'fireNotice.fireNoticeId':''#942
+                 }
+GetXueXiZiLiao={
+                'orgId':'',#413
+                'fireNotice.noticeType':'1',
+                'queryParameter.orgId':'',#413
+                '_search':'false',
+                #nd:1465952065232
+                'rows':'80',
+                'page':'1',
+                'sidx':'id',
+                'sord':'desc',
+                }
+XueXiZiLiao={
+             'simpleTitle':'',
+             'fireNoticeId':''
+             }
+
+DelXueXiZiLiao={
+                'fireNoticeId':''
+                }
+
+

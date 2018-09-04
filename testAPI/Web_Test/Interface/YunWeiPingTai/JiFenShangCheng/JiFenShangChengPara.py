@@ -1,0 +1,305 @@
+# -*- coding:UTF-8 -*-
+'''
+Created on 2016-11-23
+
+@author: N-286
+'''
+from __future__ import unicode_literals
+from COMMON import Time, CommonUtil
+from CONFIG import InitDefaultPara
+from CONFIG.InitDefaultPara import clueOrgInit
+from Interface.XianSuoApp.GongZuoTai.XsGongZuoTaiIntf import createRandomNumber
+import time
+
+departmentNo=InitDefaultPara.clueOrgInit['DftQuOrgDepNo']
+def enum(**enums):
+    return type(str('Enum'), (), enums)
+#banner图跳转类型，0为信息详情，1为大转盘
+JumpType = enum(XIANGQING=0,DAZHUANPAN=1)
+#大奖品类型，0为开启，1为关闭
+LotteryAllocationState=enum(CLOSE=1,OPEN=0)
+#奖品配置中的奖品类型，手机卡0，实物1，积分2，无3
+GoodsType=enum(PHONECARD=0,PHYSICAL=1,POINT=2,NONE=3)
+#寄送方式,0自取，1寄送
+ShippingMethod=enum(ZIQU=0,JISONG=1)
+#抽奖记录兑换状态
+ExchangeState=enum(WEIDUIHUAN=0,YIDUIHUAN=1,QUXIAO=2)
+#运营商
+Operators=enum(ALL=0,MOBILE=1,UNICOM=2,TELECOM=3)
+#积分类型
+PointType=enum(BAOLIAO=1,GUANZHU=2,DIANZAN=3,PINGLUN=4,SHOULI=5)
+#获取积分配置列表参数
+getPointConfigPara={
+'_search':'false',
+'rows':20,
+'page':1,
+'sidx':'id',
+'sord':'desc'
+                    }
+#转盘抽奖新增参数
+ZhuanPanChouJiangXinZeng={
+      'startDate':Time.getCurrentDate(),
+      'endDate':Time.getCurrentDate(),
+      'lotteryAllocation.lotteryPoints':'1',#每次抽奖消耗积分
+      'lotteryAllocation.lotteryDayNumber':999,#每日抽奖次数上限
+      'lotteryAllocation.accuracy':'',#中奖精度，随机数区间上限，下限是0
+      'lotteryAllocation.lotteryActivityNo':'',#活动编号ZP201611239595953390
+      'lotteryAllocation.activityDetails':'',#活动详情
+      'lotteryAllocation.departmentNo':'',#部门编号959595
+      'lotteryAllocation.orgName':'',#部门名称，区县
+                          }
+
+#转盘抽奖新增参数，附带默认参数
+ZhuanPanChouJiangXinZeng2={
+      'startDate':Time.getCurrentDate(),
+      'endDate':Time.getCurrentDate(),
+      'lotteryAllocation.lotteryPoints':1,#每次抽奖消耗积分
+      'lotteryAllocation.lotteryDayNumber':999,#每日抽奖次数上限
+      'lotteryAllocation.accuracy':80,#中奖精度，随机数区间上限，下限是0
+      'lotteryAllocation.lotteryActivityNo':'ZP'+time.strftime("%Y%m%d")+departmentNo+createRandomNumber(4),#活动编号ZP201611239595953390
+      'lotteryAllocation.activityDetails':'抽奖活动介绍',#活动详情
+      'lotteryAllocation.departmentNo':departmentNo,#部门编号959595
+      'lotteryAllocation.orgName':clueOrgInit['DftQuOrg']#部门名称，区县
+                          }
+#转盘抽奖修改参数，附带默认参数
+ZhuanPanChouJiangXiuGai={
+      'lotteryAllocation.id':'',                 
+      'startDate':Time.getCurrentDate(),
+      'endDate':Time.getCurrentDate(),
+      'lotteryAllocation.lotteryPoints':'1',#每次抽奖消耗积分
+      'lotteryAllocation.lotteryDayNumber':999,#每日抽奖次数上限
+      'lotteryAllocation.accuracy':80,#中奖精度，随机数区间上限，下限是0
+      'lotteryAllocation.lotteryActivityNo':'ZP'+time.strftime("%Y%m%d")+departmentNo+createRandomNumber(4),#活动编号ZP201611239595953390
+      'lotteryAllocation.activityDetails':'抽奖活动介绍',#活动详情
+      'lotteryAllocation.departmentNo':departmentNo,#部门编号959595
+      'lotteryAllocation.orgName':clueOrgInit['DftQuOrg']#部门名称，区县
+                          }
+#转盘抽奖新增页面banner图片
+# DaZhuanPanFile={
+#         'iosImgValue':open('C:/autotest_file/XianSuoChouJiangPeiTu/banner-ios.png', 'rb'),
+#         'androidImgValue':open('C:/autotest_file/XianSuoChouJiangPeiTu/banner-android.png', 'rb')    
+#                 }
+#转盘抽奖列表参数
+ZhuanPanChouJiangLieBiao={
+        'lotteryAllocation.lotteryActivityNo':'',
+        'lotteryAllocation.departmentNo':departmentNo,
+        '_search':'false',
+        'rows':'200',
+        'page':'1',
+        'sidx':'id',
+        'sord':'desc'                      
+                          }
+ZhuanPanChouJiangLieBiaoJianCha={
+        'activityDetails':None,                         
+        'lotteryActivityNo':None,
+        'state':None,                  
+        'lotteryDayNumber':None,
+        'lotteryPoints':None,
+        'accuracy':None
+                                 }
+#奖品配置参数
+JiangPingPeiZhi={
+        'prizeSetting.id':'',
+        'prizeSetting.lotteryAllocationId':'',
+        'prizeSetting.goodsType':'',#手机卡0，实物1，积分2，无3
+        'prizeSetting.prizeName':'',
+        'prizeSetting.prizeNumber':'',#手机卡数量
+        'prizeSetting.shippingMethod':None,#实物配送方式，0自取，1寄送
+        'prizeSetting.intervalStart':'',#中奖开始区间
+        'prizeSetting.intervalEnd':'',#中奖结束区间
+        'prizeSetting.quota':None#实物和积分数量
+                 }
+#奖品配置列表参数
+JiangPingPeiZhiLieBiao={
+        'prizeSetting.lotteryAllocationId':'',
+        '_search':'false',
+        'rows':'200',
+        'page':'1',
+        'sidx':'id',
+        'sord':'desc'
+                        }
+
+#奖品配置列表检查参数
+JiangPingPeiZhiLieBiaoJianCha={
+      'id':None,                         
+      'prizeNumber':None,
+      'prizeName':None,
+      'shippingMethod':None,
+      'intervalStart':None,
+      'intervalEnd':None
+                    }
+
+#抽奖记录列表
+ChouJiangJiLuLieBiao={
+        'lotteryRecord.userMobile':'',
+        'lotteryRecord.departmentNo':departmentNo,
+        '_search':'false',
+        'rows':'20',
+        'page':'1',
+        'sidx':'id',
+        'sord':'desc',                  
+                  }
+
+#抽奖记录列表检查参数
+ChouJiangJiLuLieBiaoJianCha={
+       'goodsName':None,
+       'goodsType':None,
+       'exchangeState':None 
+                      }
+
+#积分商城banner图
+BannerPicAdd={
+        'storeImageConfiguration.title':'',
+        'startDate':Time.getCurrentDate(),
+        'endDate':Time.getCurrentDate(),
+        'storeImageConfiguration.jumpType':'',#跳转类型，1大转盘，0活动详情
+        'storeImageConfiguration.lotteryAllocationId':None,#大转盘id
+        'storeImageConfiguration.contentText':'',#活动正文
+        'storeImageConfiguration.departmentNo':departmentNo,
+        'storeImageConfiguration.orgName':clueOrgInit['DftQuOrg'],
+           }
+#积分商城banner图修改
+BannerPicUpd={
+        'storeImageConfiguration.id':'',
+        'storeImageConfiguration.title':'',
+        'startDate':Time.getCurrentDate(),
+        'endDate':Time.getCurrentDate(),
+        'storeImageConfiguration.contentText':'',#活动正文
+           }
+#Banner图列表参数
+BannerPicList={
+        'storeImageConfiguration.title':'',
+        'storeImageConfiguration.departmentNo':departmentNo,
+        '_search':'false',
+        'rows':'200',
+        'page':'1',
+        'sidx':'id',
+        'sord':'desc', 
+               }
+#Banner图PC列端表检查参数
+BannerPicCheck={
+        'title':None,
+        'contentText':None,
+        'jumpType':None
+               }
+#商品新增参数
+ShangPinXinZeng={
+            'goodsConfiguration.goodsType':1,#0手机卡，1实物
+            'goodsConfiguration.goodsName':'商品名称'+CommonUtil.createRandomString(),
+            'goodsConfiguration.goodsProfile':'简介'+CommonUtil.createRandomString(),
+            'goodsConfiguration.goodsDetails':'详情'+CommonUtil.createRandomString(),
+            'goodsConfiguration.goodsNum':'',
+            'goodsConfiguration.exchangePoints':'',
+            'goodsConfiguration.departmentNo':departmentNo,
+            'goodsConfiguration.orgName':clueOrgInit['DftQuOrg'],
+            'goodsConfiguration.goodsNo':'',
+            'goodsConfiguration.quota':None,#面额
+            'goodsConfiguration.operators':None,#运营商
+            'goodsConfiguration.shippingMethod':None,#寄送方式,0自取，1寄送
+                 }
+#商品修改参数
+ShangPinXiuGai={
+            'goodsConfiguration.id':'',
+            'goodsConfiguration.goodsName':'商品名称1',
+            'goodsConfiguration.goodsProfile':'简介1',
+            'goodsConfiguration.goodsDetails':'详情1',
+            'goodsConfiguration.goodsNum':'',
+            'goodsConfiguration.exchangePoints':'',
+                }
+#商品列表参数
+ShangPinLieBiao={
+            'goodsConfiguration.goodsName':'',
+            'goodsConfiguration.departmentNo':departmentNo,
+            '_search':'false',
+            'rows':'200',
+            'page':'1',
+            'sidx':'id',
+            'sord':'desc'
+}
+#商品PC列表检查参数
+ShangPinLieBiaoCheck={
+          'goodsName':'',
+          'goodsProfile':None,
+          'goodsDetails':None,
+          'goodsType':None,
+          'exchangePoints':None,
+          'quota':None,
+          'goodsNo':None
+                      }
+
+# 积分规则参数
+JiFenGuiZe={
+            'departmentNo':departmentNo,
+            'id':'',
+            'notice':'大江东区积分规则'
+            }
+#实物自取确认兑换参数
+ShiWuZiQu={
+           'id':'',
+           'userMobile':'',
+           'exchangeCode':''         
+           }
+#兑换记录列表参数
+DuiHuanJiLuLieBiao={
+        'exchangeRecord.goodsType':None,
+        'exchangeRecord.exchangeState':None,
+        'exchangeRecord.orderNo':None,
+        'startDate':None,
+        'endDate':None,
+        'exchangeRecord.userMobile':'',
+        'exchangeRecord.departmentNo':departmentNo,
+        '_search':'false',
+        'rows':'200',
+        'page':'1',
+        'sidx':'id',
+        'sord':'desc',
+                    }
+#兑换记录列表检查参数
+DuiHuanJiLuJianCha={
+        'exchangeCode':None,                    
+        'exchangeState':None,
+        'remarks':None,
+        'goodsName':None,
+        'goodsType':None      
+                    }
+#活动新增参数
+HuoDongXinZeng={
+                'startDate':Time.getCurrentDate(),
+                'endDate':Time.getCurrentDate(),
+                'activeTimeConfiguration.goodsType':'0',
+                'activeTimeConfiguration.exchangeCeiling':'',
+                'activeTimeConfiguration.goodsTotal':'',
+                'activeTimeConfiguration.departmentNo':departmentNo,
+                'activeTimeConfiguration.orgName':clueOrgInit['DftQuOrg'],
+                'activeTimeConfiguration.activityNo':''#'HD'+time.strftime("%Y%m")+addActivityPara['activeTimeConfiguration.departmentNo']+createRandomNumber(length=4)           
+                }
+#活动修改
+HuoDongXiuGai={
+               'activeTimeConfiguration.id':'',
+                'startDate':'',
+                'endDate':'',
+                'activeTimeConfiguration.goodsType':'',
+                'activeTimeConfiguration.exchangeCeiling':'',
+                'exchangeCeilingUp':'',
+                'activeTimeConfiguration.goodsTotal':'',
+                'goodsTotalUp':'',
+                'activeTimeConfiguration.activityNo':''
+               }
+#活动列表
+HuoDongLieBiao={
+            'activeTimeConfiguration.activityNo':'',
+            'activeTimeConfiguration.departmentNo':departmentNo,
+            '_search':'false',
+            'rows':'20',
+            'page':'1',
+            'sidx':'id',
+            'sord':'desc',               
+                }
+
+#活动检查参数
+HuoDongJianCha={
+                'activityNo':None,
+                'goodsTotal':None,#商品总额
+                'departmentNo':None,
+                'exchangeCeiling':None#每人兑换上限
+                }

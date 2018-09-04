@@ -1,0 +1,1 @@
+C:\Python27\python.exe -u D:\AutoTest\workspace\Web_Test\Scripts\Interface\PingAnJianShe\all_test.py

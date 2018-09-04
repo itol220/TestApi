@@ -1,0 +1,16 @@
+1、python 安装 3.5以上版本，根据电脑版本自行选择安装
+
+2、IDE 安装IDE  推荐pycharm 社区版、(或sublime text)
+
+社区版本地址：http://www.jetbrains.com/pycharm/download/#section=windows
+
+3、测试报告模板存放路径：python\Lib\site-packages
+
+4、需要安装的第三方库
+
+	unittest 、requests 、user_agent、yagmail
+
+	安装方式：pip  install 包名
+
+
+

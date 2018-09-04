@@ -1,0 +1,1712 @@
+'''
+Created on 2015-11-24
+
+@author: N-133
+'''
+import time
+'''
+Created on 2015-11-5
+
+@author: N-254
+'''
+
+delShiYouDanWei={
+                 "locationIds":""
+                 }
+
+ShiYouDanWeiObject ={
+             'mode':'',
+              'organizationId':'',
+              'location.gisInfo.buildingId':'',
+              'location.gisInfo.centerX':'',
+              'location.gisInfo.centerY':'',
+              'location.id':'',
+              'location.imgUrl':'',
+              'location.organization.orgName':'',
+              'location.companyName':'',
+              'location.companyAddress':'',
+              'location.businessLicenseNo':'',
+              'location.orgCode':'',
+              'location.companyType.id':'',
+              'location.corporateRepresentative':'',
+              'location.idCardNo':'',
+              'location.telephone':'',
+              'location.facsimile':'',
+              'location.registeredCapital':'',
+              'location.economicNature.id':'',
+              'location.registrationDate':'',
+              'location.expiryDate':'',
+              'location.businessScope':'',
+              'location.registrationAddress':'',
+              'location.employeesNum':'',
+              'location.competentDepartment':'',
+              'location.supervisoryLevel.id':'',
+              'location.supervisoryDepartment':'',
+              'location.fireFightingLevel.id':'',
+              'location.securityChief':'',
+              'location.remark':''
+              } 
+
+ChaKanShiYouDanWeiObject ={
+                           "organizationId":"",
+                           "location.isEmphasis":"false",
+                           "_search":"false",
+                           "rows":"20",
+                           "page":"1",
+                           "sidx":"id",
+                           "sord":"desc"
+                           }
+
+ChaKanDanWeiObject = {
+          "companyName":None,
+          "companyAddress":None,
+          "organizationId":None
+              
+             }
+
+FuWuChengYuanObject ={
+                     'serviceTeamMemberBase.id':'',
+                     'erviceTeamMemberBase.org.id':'',
+                     'addTeam':'',
+                     'serviceTeamMemberBase.name':'',
+                     'serviceTeamMemberBase.gender.id':'',
+                     'serviceTeamMemberBase.job':'',
+                     'serviceTeamMemberBase.birthday':'',
+                     'serviceTeamMemberBase.mobile':'',
+                     'serviceTeamMemberBase.homePhone':'',
+                     'serviceTeamMemberBase.remark':'',
+                     'positionInTeam':'',
+                     'isSubmit':''
+                     }
+
+ChaKanRenYuanObject = {
+          "name":None,
+          "job":None,
+          "serviceTeamMemberVo.org.Id":None
+              
+             }
+
+getFuWuChengYuan={
+                  'serviceTeamMemberVo.orgScope':'sameGrade',
+                  'serviceTeamMemberVo.org.Id':'',
+                  'serviceTeamMemberVo.nameIsDuplicate':'0',
+                  '_search':'',
+                  'rows':'100',
+                  'page':'1',
+                  'sidx':'baseId',
+                  'sord':'desc'
+                  }
+
+delFuWuChengYuan={
+                  'selectedIds':'',
+                  'mode':'delete'
+                  }
+ModifyShiYouDanWeiObject= {
+                           'mode':'',
+                           'organizationId':'',
+                           'location.gisInfo.buildingId':'',
+                           'location.gisInfo.centerX':'',
+                           'location.gisInfo.centerY':'',
+                           'location.id':'',
+                           'location.imgUrl':'',
+                           'location.organization.orgName':'',
+                           'location.companyName':'',
+                           'location.companyAddress':'',
+                           'location.businessLicenseNo':'',
+                           'location.orgCode':'',
+                           'location.companyType.id':'',
+                           'location.corporateRepresentative':'',
+                           'location.idCardNo':'',
+                           'location.telephone':'',
+                           'location.facsimile':'',
+                           'location.registeredCapital':'',
+                           'location.economicNature.id':'',
+                           'location.registrationDate':'',
+                           'location.expiryDate':'',
+                           'location.businessScope':'',
+                           'location.registrationAddress':'',
+                           'location.employeesNum':'',
+                           'location.competentDepartment':'',
+                           'location.supervisoryLevel.id':'',
+                           'location.supervisoryDepartment':'',
+                           'location.fireFightingLevel.id':'',
+                           'location.securityChief':'',
+                           'location.remark':''
+                           }
+XunChangQingKuangObject = {
+                      "serviceRecord.userOrgId":"",
+                      "mode":"",
+                      "serviceRecord.organization.id":"",
+                      "serviceRecord.id":"",
+                      "serviceRecord.teamId":"",
+                      "isSubmit":"",
+                      "serviceRecord.occurDate":"",
+                      "serviceRecord.occurPlace":"",
+                      "serviceRecord.serviceMembers":"",
+                      "serviceRecord.serviceJoiners":"",
+                      "serviceRecord.recordType":"",
+                     "serviceRecord.serviceObjects":"",
+                       "serviceRecord.serviceContent":""
+                      }
+
+ChaKanXunChangQingKuang={
+                         "occurPlace":None,
+                         "objectIds":None,
+                         }
+
+getXunChangQingKuang={
+                      "objectIds":"",
+                      "populationType":"actualCompany",
+                      "serviceRecordVo.organization.id":"",
+                      "serviceRecordVo.displayYear":"2015",
+                      "rows":"20",
+                      "page":"1",
+                      "sidx":"id",
+                      "sord":"desc"
+                      }
+addAnQuanShengChan={
+                    "modeType":"",
+                    "mode":"",
+                    "ownerOrg.id":"",
+                    "enterprise.id":"",
+                    "enterprise.imgUrl":"",
+                    "enterprise.keyType":"",
+                    "placeTypeName":"",
+                    "isSubmit":"",
+                    "orgName":"",
+                    "enterprise.name":"",
+                    "enterprise.address":"",
+                    "enterprise.legalPerson":"",
+                    "enterprise.type.id":"",
+                    "enterprise.attentionExtent.id":"",
+                    "enterprise.registeredCapital":"",
+                    "enterprise.industry.id":"",
+                    "enterprise.area":"",
+                    "enterprise.employeeAmount":"",
+                    "enterprise.partyMemberAmount":"",
+                    "enterprise.enterpriseTelephone":"",
+                    "enterprise.fax":"",
+                    "enterprise.telephone":"",
+                    "enterprise.mobileNumber":"",
+                    "enterprise.businessLicense":"",
+                    "enterprise.hiddenCases":"",
+                    "enterprise.hiddenRectification":"",
+                    "enterprise.remark":"",
+                    "objectIds":""
+                    }
+
+UpdateAnQuanShengChan={
+                    "modeType":"",
+                    "mode":"",
+                    "ownerOrg.id":"",
+                    "enterprise.id":"",
+                    "enterprise.imgUrl":"",
+                    "enterprise.keyType":"",
+                    "placeTypeName":"",
+                    "isSubmit":"",
+                    "orgName":"",
+                    "enterprise.name":"",
+                    "enterprise.address":"",
+                    "enterprise.legalPerson":"",
+                    "enterprise.type.id":"",
+                    "enterprise.attentionExtent.id":"",
+                    "enterprise.registeredCapital":"",
+                    "enterprise.industry.id":"",
+                    "enterprise.area":"",
+                    "enterprise.employeeAmount":"",
+                    "enterprise.partyMemberAmount":"",
+                    "enterprise.enterpriseTelephone":"",
+                    "enterprise.fax":"",
+                    "enterprise.telephone":"",
+                    "enterprise.mobileNumber":"",
+                    "enterprise.businessLicense":"",
+                    "enterprise.hiddenCases":"",
+                    "enterprise.hiddenRectification":"",
+                    "enterprise.remark":"",
+                    }
+
+ChaKanAnQuanShengChan={
+                         "name":None,
+                         "organization":None
+                         }
+
+ChaKanAnQuanShengChanbject ={
+                           "orgId":"",
+                           "location.isEmphasis":"0",
+                           "keyType":"safetyProductionKey",
+                           "rows":"20",
+                           "page":"1",
+                           "sidx":"id",
+                           "sord":"desc"
+                           }
+
+CheckObject ={
+                           "orgId":"",
+                           "enterpriseSearchCondition.keyType":"",
+                           "enterpriseSearchCondition.isEmphasis":"-1",
+                           "enterpriseSearchCondition.hasServiceTeamMember":"-1",
+                           "enterpriseSearchCondition.hasServiceRecord":"-1",
+                           "enterpriseSearchCondition.sortField":"occurdate",
+                           "enterpriseSearchCondition.name":"",
+                           "enterpriseSearchCondition.address":"",
+                           "enterpriseSearchCondition.legalPerson":"",
+                           "enterpriseSearchCondition.typeId":"",
+                           "enterpriseSearchCondition.businessLicense":"",
+                           "enterpriseSearchCondition.industryId":"",
+                           "enterpriseSearchCondition.isRiskEnterprise1":"",
+                           "enterpriseSearchCondition.order":"",
+                           "enterpriseSearchCondition.createDateStart":"",
+                           "enterpriseSearchCondition.createDateEnd":"",
+                           "enterpriseSearchCondition.updateDateStart":"",
+                           "enterpriseSearchCondition.updateDateEnd":"",
+                           "enterpriseSearchCondition.minArea":"",
+                           "enterpriseSearchCondition.maxArea":"",
+                           "enterpriseSearchCondition.enterpriseTelephon":"",
+                           "enterpriseSearchCondition.minPartyMemberAmount":"",
+                           "enterpriseSearchCondition.maxPartyMemberAmount":"",
+                           "enterpriseSearchCondition.fax":"",
+                           "enterpriseSearchCondition.minEmployeeAmount":"",
+                           "enterpriseSearchCondition.maxEmployeeAmount":"",
+                           "enterpriseSearchCondition.mobileNumber":"",
+                           "enterpriseSearchCondition.minRegisteredCapital":"",
+                           "enterpriseSearchCondition.maxRegisteredCapital":"",
+                           "enterpriseSearchCondition.telephone":"",
+                           "enterpriseSearchCondition.hiddenCases":"",
+                           "enterpriseSearchCondition.hiddenRectification":"",
+                           "_search":"false",
+                           "rows":"200",
+                           "page":"1",
+                           "sidx":"id",
+                           "sord":"desc"
+                           }
+
+delAnQuanShengChan={
+                    "enterPriseIds":"",
+                    "schoolIds":"",
+                    "otherLocaleIds":""
+                    }
+
+addXiaoFangAnQuan={
+                   "modeType":"",
+                   "mode":"",
+                   "ownerOrg.id":"",
+                   "enterprise.id":"",
+                   "enterprise.imgUrl":"",
+                   "enterprise.keyType":"",
+                   "placeTypeName":"",
+                   "isSubmit":"",
+                   "orgName":"",
+                   "enterprise.name":"",
+                   "enterprise.address":"",
+                   "enterprise.type.id":"",
+                   "enterprise.legalPerson":"",
+                   "enterprise.attentionExtent.id":"",
+                   "enterprise.mobileNumber":"",
+                   "enterprise.telephone":"",
+                   "enterprise.hiddenCases":"",
+                   "enterprise.hiddenRectification":"",
+                   "enterprise.remark":""
+                   }
+
+UpdateXiaoFangAnQuan={
+                   "modeType":"",
+                   "mode":"",
+                   "ownerOrg.id":"",
+                   "enterprise.id":"",
+                   "enterprise.imgUrl":"",
+                   "enterprise.keyType":"",
+                   "placeTypeName":"",
+                   "isSubmit":"",
+                   "orgName":"",
+                   "enterprise.name":"",
+                   "enterprise.address":"",
+                   "enterprise.type.id":"",
+                   "enterprise.legalPerson":"",
+                   "enterprise.attentionExtent.id":"",
+                   "enterprise.mobileNumber":"",
+                   "enterprise.telephone":"",
+                   "enterprise.hiddenCases":"",
+                   "enterprise.hiddenRectification":"",
+                   "enterprise.remark":""
+                   }
+
+
+getXiaoFangAnQuan={
+                   "orgId":"",
+                   "location.isEmphasis":"0",
+                   "keyType":"fireSafetyKey",
+                   "_search":"false",
+                   "rows":"20",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+XiaoFangAnQuan={
+               "address":None,
+               "name":None,
+               "organization":None
+                }
+
+delXiaoFangAnQuan={
+                   "enterPriseIds":""
+                   }
+
+addZhiAnZhongDian={
+                   "modeType":"",
+                   "mode":"",
+                   "ownerOrg.id":"",
+                   "enterprise.id":"",
+                   "enterprise.imgUrl":"",
+                   "enterprise.keyType":"",
+                   "placeTypeName":"",
+                   "isSubmit":"",
+                   "orgName":"",
+                   "enterprise.name":"",
+                   "enterprise.address":"",
+                   "enterprise.type.id":"",
+                   "enterprise.legalPerson":"",
+                   "enterprise.attentionExtent.id":"",
+                   "enterprise.mobileNumber":"",
+                   "enterprise.telephone":"",
+                   "enterprise.hiddenCases":"",
+                   "enterprise.hiddenRectification":"",
+                   "enterprise.remark":""                   
+                   }
+
+UpdateZhiAnZhongDian={
+                   "modeType":"",
+                   "mode":"",
+                   "ownerOrg.id":"",
+                   "enterprise.id":"",
+                   "enterprise.imgUrl":"",
+                   "enterprise.keyType":"",
+                   "placeTypeName":"",
+                   "isSubmit":"",
+                   "orgName":"",
+                   "enterprise.name":"",
+                   "enterprise.address":"",
+                   "enterprise.type.id":"",
+                   "enterprise.legalPerson":"",
+                   "enterprise.attentionExtent.id":"",
+                   "enterprise.mobileNumber":"",
+                   "enterprise.telephone":"",
+                   "enterprise.hiddenCases":"",
+                   "enterprise.hiddenRectification":"",
+                   "enterprise.remark":""                   
+                   }
+
+getZhiAnZhongDian={
+                   "orgId":"",
+                   "location.isEmphasis":"0",
+                   "keyType":"securityKey",
+                   "_search":"false",
+                   "rows":"20",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+ZhiAnZhongDian={
+               "address":None,
+               "name":None,
+               "organization":None
+                }
+
+delZhiAnZhongDian={
+                   "enterPriseIds":"",
+                   "schoolIds":"",
+                   "otherLocaleIds":""
+                   }
+
+addXueXiao={
+                   "placeTypeName":"",
+                   "modeType":"",
+                   "orgId":"",
+                   "mode":"",
+                   "school.organization.orgInternalCode":"",
+                   "school.orgInternalCode":"",
+                   "school.organization.id":"",
+                   "school.id":"",
+                   "school.createUser":"",
+                   "isSubmit":"",
+                   "school.createDate":"",
+                   "school.imgUrl":"",
+                   "orgName":"",
+                   "school.chineseName":"",
+                   "school.address":"",
+                   "school.kind.id":"",
+                   "school.president":"",
+                   "school.type.id":"",
+                   "school.attentionExtent.id":"",
+                   "school.hasCertificate":"",
+                   "school.englishName":"",
+                   "school.webSite":"",
+                   "school.personLiable":"",
+                   "school.atSchoolHeadcount":"",
+                   "school.personLiableTelephone":"",
+                   "school.personLiableMobileNumber":"",
+                   "school.fax":"",
+                   "school.email":"",
+                   "school.remark":""
+                   }
+
+UpdateXueXiao={
+                   "placeTypeName":"",
+                   "modeType":"",
+                   "orgId":"",
+                   "mode":"",
+                   "school.organization.orgInternalCode":"",
+                   "school.orgInternalCode":"",
+                   "school.organization.id":"",
+                   "school.id":"",
+                   "school.createUser":"",
+                   "isSubmit":"",
+                   "school.createDate":"",
+                   "school.imgUrl":"",
+                   "orgName":"",
+                   "school.chineseName":"",
+                   "school.address":"",
+                   "school.kind.id":"",
+                   "school.president":"",
+                   "school.type.id":"",
+                   "school.attentionExtent.id":"",
+                   "school.hasCertificate":"",
+                   "school.englishName":"",
+                   "school.webSite":"",
+                   "school.personLiable":"",
+                   "school.atSchoolHeadcount":"",
+                   "school.personLiableTelephone":"",
+                   "school.personLiableMobileNumber":"",
+                   "school.fax":"",
+                   "school.email":"",
+                   "keyType":"",
+                   "school.remark":""
+                   }
+
+getXueXiao={
+                   "orgId":"",
+                   "location.isEmphasis":"0",
+                   "keyType":"",
+                   "school.chineseName":"",
+                   "school.kind.id":"",
+                   "school.type.id":"",
+                   "_search":"false",
+                   "rows":"20",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+XueXiao={
+               "address":None,
+               "chineseName":None,
+               "organization":None
+                }
+
+delXueXiao={
+                   "enterPriseIds":"",
+                   "schoolIds":"",
+                   "otherLocaleIds":""
+                   }
+
+addYiYuan={
+           "ty":"",
+           "mode":"",
+           "modeType":"",
+           "organizationId":"",
+           "hospital.organization.id":"",
+           "hospital.orgInternalCode":"",
+           "hospital.id":"",
+           "hospital.imgUrl":"",
+           "orgName":"",
+           "hospital.hospitalName":"",
+           "hospital.level.id":"",
+           "hospital.anotherName":"",
+           "hospital.kind.id":"",
+           "hospital.address":"",
+           "hospital.type.id":"",
+           "hospital.personLiable":"",
+           "hospital.personLiableTelephone":"",
+           "hospital.personLiableMobileNumber":"",
+           "hospital.affiliatedUnit":"",
+           "hospital.director":"",
+           "hospital.contactName":"",
+           "hospital.telephone":"",
+           "hospital.mobileNumber":"",
+           "hospital.email":"",
+           "hospital.fax":"",
+           "hospital.remark":""
+           }
+
+UpdateYiYuan={
+           "ty":"",
+           "mode":"",
+           "modeType":"",
+           "organizationId":"",
+           "hospital.organization.id":"",
+           "hospital.orgInternalCode":"",
+           "hospital.id":"",
+           "hospital.imgUrl":"",
+           "orgName":"",
+           "hospital.hospitalName":"",
+           "hospital.level.id":"",
+           "hospital.anotherName":"",
+           "hospital.kind.id":"",
+           "hospital.address":"",
+           "hospital.type.id":"",
+           "hospital.personLiable":"",
+           "hospital.personLiableTelephone":"",
+           "hospital.personLiableMobileNumber":"",
+           "hospital.affiliatedUnit":"",
+           "hospital.director":"",
+           "hospital.contactName":"",
+           "hospital.telephone":"",
+           "hospital.mobileNumber":"",
+           "hospital.email":"",
+           "hospital.fax":"",
+           "hospital.remark":""
+           }
+
+getYiYuan={
+                   "organizationId":"",
+                   "location.isEmphasis":"false",
+                   "_search":"false",
+                   "rows":"20",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+YiYuan={
+               "address":None,
+               "hospitalName":None,
+               "organization":None
+                }
+
+delYiYuan={
+           "locationIds":""
+           }
+
+addWeiXianHuaXuePing={
+                      "location.imgUrl":"",
+                      "mode":"",
+                      "modeType":"",
+                      "location.id":"",
+                      "location.gisInfo.buildingId":"",
+                      "location.gisInfo.centerX":"",
+                      "location.gisInfo.centerY":"",
+                      "organizationId":"",
+                      "location.organization.id":"",
+                      "personTypeName":"",
+                      "location.organization.orgName":"",
+                      "location.unitName":"",
+                      "location.unitAddress":"",
+                      "location.attentionExtent.id":"",
+                      "location.superintendent":"",
+                      "location.telephone":"",
+                      "location.unitType":"",
+                      "location.commodityType":"",
+                      "location.copyScope":"",
+                      "location.storageDevice":"",
+                      "location.remark":"",
+                      "isSubmit":""
+                      }
+
+UpdateWeiXianHuaXuePing={
+                      "location.imgUrl":"",
+                      "mode":"",
+                      "modeType":"",
+                      "location.id":"",
+                      "location.gisInfo.buildingId":"",
+                      "location.gisInfo.centerX":"",
+                      "location.gisInfo.centerY":"",
+                      "organizationId":"",
+                      "location.organization.id":"",
+                      "personTypeName":"",
+                      "location.organization.orgName":"",
+                      "location.unitName":"",
+                      "location.unitAddress":"",
+                      "location.attentionExtent.id":"",
+                      "location.superintendent":"",
+                      "location.telephone":"",
+                      "location.unitType":"",
+                      "location.commodityType":"",
+                      "location.copyScope":"",
+                      "location.storageDevice":"",
+                      "location.remark":"",
+                      "isSubmit":""
+                      }
+
+getWeiXianHuaXuePing={
+                   "organizationId":"",
+                   "location.isEmphasis":"false",
+                   "_search":"false",
+                   "rows":"20",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+WeiXianHuaXuePing={
+               "unitName":None,
+               "organization":None
+                }
+
+delWeiXianHuaXuePing={
+                      "locationIds":"",
+                      }
+
+addShangWanFuWu={
+                      "mode":"",
+                      "modeType":"",
+                      "location.id":"",
+                      "location.gisInfo.buildingId":"",
+                      "location.gisInfo.centerX":"",
+                      "location.gisInfo.centerY":"",
+                      "location.placeId":"",
+                      "location.organization.id":"",
+                      "ajaxUrl":"",
+                      "location.imgUrl":"",
+                      "location.placeName":"",
+                      "location.organization.orgName":"",
+                      "location.attentionExtent.id":"",
+                      "location.manager":"",
+                      "location.mobile":"",
+                      "location.barCode":"",
+                      "location.placeAddress":"",
+                      "location.netAccessProviders":"",
+                      "location.useIP":"",
+                      "location.internetAccessType":"",
+                      "location.netCultureLicenceNo":"",    
+                      "location.totalComputerNum":"", 
+                      "location.stationPolice":"", 
+                      "location.operationArea":"", 
+                      "location.netSecurityAuditNo":"", 
+                      "location.tempNetCardNum":"", 
+                      "location.fireAuditDocumentNo":"", 
+                      "location.remark":"", 
+                      "isSubmit":""           
+                 }
+
+UpdateShangWanFuWu1={
+                      "mode":"",
+                      "modeType":"",
+                      "location.id":"",
+                      "location.gisInfo.buildingId":"",
+                      "location.gisInfo.centerX":"",
+                      "location.gisInfo.centerY":"",
+                      "location.organization.id":"",
+                      "ajaxUrl":"",
+                      "location.imgUrl":"",
+                      "location.placeName":"",
+                      "location.organization.orgName":"",
+                      "location.attentionExtent.id":"",
+                      "location.manager":"",
+                      "location.placeAddress":"",
+                      "location.registrationNumber":"",
+                      "location.openingDate":"",    
+                      "location.licenseDate":"", 
+                      "location.placeLevel":"", 
+                      "location.category":"", 
+                      "location.totalArea":"", 
+                      "location.operationArea":"", 
+                      "location.privateRoomCount":"", 
+                      "location.vouchedPeopleCount":"", 
+                      "location.passageway":"",
+                      "location.cloakroom.id":"",
+                      "location.innerStructure":"",
+                      "location.buildingStructure":"",
+                      "location.surrounding":"",
+                      "location.remark":"",  
+                      "isSubmit":""
+                 }
+
+UpdateShangWanFuWu={
+                      "mode":"",
+                      "modeType":"",
+                      "location.id":"",
+                      "location.gisInfo.buildingId":"",
+                      "location.gisInfo.centerX":"",
+                      "location.gisInfo.centerY":"",
+                      "location.placeId":"",
+                      "location.organization.id":"",
+                      "ajaxUrl":"",
+                      "location.imgUrl":"",
+                      "location.placeName":"",
+                      "location.organization.orgName":"",
+                      "location.attentionExtent.id":"",
+                      "location.manager":"",
+                      "location.mobile":"",
+                      "location.barCode":"",
+                      "location.placeAddress":"",
+                      "location.netAccessProviders":"",
+                      "location.useIP":"",
+                      "location.internetAccessType":"",
+                      "location.netCultureLicenceNo":"",    
+                      "location.totalComputerNum":"", 
+                      "location.stationPolice":"", 
+                      "location.operationArea":"", 
+                      "location.netSecurityAuditNo":"", 
+                      "location.tempNetCardNum":"", 
+                      "location.fireAuditDocumentNo":"", 
+                      "location.remark":"", 
+                      "isSubmit":""           
+                 }
+
+getShangWanFuWu={
+                   "organizationId":"",
+                   "location.isEmphasis":"false",
+                   "_search":"false",
+                   "rows":"20",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+ShangWanFuWu={
+               "placeName":None,
+               "organization":None
+                }
+
+delShangWanFuWu={
+                      "locationIds":"",
+                      }
+
+addGongGongChangSuo={
+                      "mode":"",
+                      "modeType":"",
+                      "location.id":"",
+                      "location.gisInfo.buildingId":"",
+                      "location.gisInfo.centerX":"",
+                      "location.gisInfo.centerY":"",
+                      "location.organization.id":"",
+                      "ajaxUrl":"",
+                      "location.imgUrl":"",
+                      "location.placeName":"",
+                      "location.organization.orgName":"",
+                      "location.attentionExtent.id":"",
+                      "location.manager":"",
+                      "location.registrationNumber":"",
+                      "location.openingDate":"",
+                      "location.placeAddress":"",
+                      "location.licenseDate":"",
+                      "location.placeLevel":"",
+                      "location.category":"",
+                      "location.totalArea":"",    
+                      "location.operationArea":"", 
+                      "location.privateRoomCount":"", 
+                      "location.vouchedPeopleCount":"", 
+                      "location.passageway":"", 
+                      "location.cloakroom.id":"", 
+                      "location.innerStructure":"", 
+                      "location.buildingStructure":"", 
+                      "location.surrounding":"", 
+                      "location.remark":"", 
+                      "isSubmit":""            
+                 }
+
+getGongGongChangSuo={
+                   "organizationId":"",
+                   "location.isEmphasis":"false",
+                   "_search":"false",
+                   "rows":"20",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+GongGongChangSuo={
+               "placeName":None,
+               "organization":None
+                }
+
+delGongGongChangSuo={
+                      "locationIds":"",
+                      }
+
+addGongGongFuZaChangSuo={
+                     "mode":"",
+                     "modeType":"",
+                     "commonComplexPlace.id":"",
+                     "ownerOrg.id":"",
+                     "commonComplexPlace.placeSubclass.id":"",
+                     "commonComplexPlace.imgUrl":"",
+                     "commonComplexPlace_orgName":"",
+                     "commonComplexPlace.name":"",
+                     "commonComplexPlace.legalPersonTelephone":"",
+                     "commonComplexPlace.legalPerson":"",
+                     "commonComplexPlace.legalPersonMobileNumber":"",
+                     "commonComplexPlace.placeType.id":"",
+                     "commonComplexPlace.policeStation":"",
+                     "commonComplexPlace.address":"",
+                     "commonComplexPlace.hiddenCases":"",
+                     "commonComplexPlace.hiddenRectification":"",
+                     "commonComplexPlace.remark":""
+                     }
+
+updatetezhonghangye={
+                     "ty":"",
+                     "mode":"",
+                     "modeType":"",
+                     "organizationId":"",
+                     "specialTrade.organization.id":"",
+                     "specialTrade.id":"",
+                     "specialTrade.imgUrl":"",
+                     "specialTrade.organization.orgName":"",
+                     "specialTrade.name":"",
+                     "specialTrade.address":"",
+                     "specialTrade.personLiable":"",
+                     "specialTrade.personLiableTelephone":"",
+                     "specialTrade.type.id":"",
+                     "specialTrade.personLiableMobileNumber":"",
+                     "specialTrade.legalPerson":"",
+                     "specialTrade.mobileNumber":"",
+                     "specialTrade.telephone":"",
+                     "specialTrade.specialTradeLicense":"",
+                     "specialTrade.businessLicense":"",
+                     "specialTrade.availableDate":"",
+                     "specialTrade.specialTradeTelephone":"",
+                     "specialTrade.fax":"",
+                     "specialTrade.hiddenCases":"",
+                     "specialTrade.hiddenRectification":"",
+                     "specialTrade.remark":"",
+                     }
+
+UpdateGongGongFuZaChangSuo={
+                     "mode":"",
+                     "modeType":"",
+                     "commonComplexPlace.id":"",
+                     "ownerOrg.id":"",
+                     "commonComplexPlace.placeSubclass.id":"",
+                     "commonComplexPlace.imgUrl":"",
+                     "commonComplexPlace_orgName":"",
+                     "commonComplexPlace.name":"",
+                     "commonComplexPlace.legalPersonTelephone":"",
+                     "commonComplexPlace.legalPerson":"",
+                     "commonComplexPlace.legalPersonMobileNumber":"",
+                     "commonComplexPlace.placeType.id":"",
+                     "commonComplexPlace.policeStation":"",
+                     "commonComplexPlace.address":"",
+                     "commonComplexPlace.hiddenCases":"",
+                     "commonComplexPlace.hiddenRectification":"",
+                     "commonComplexPlace.remark":""
+                     }
+
+getGongGongFuZaChangSuo={
+                   "organizationId":"",
+                   "location.isEmphasis":"false",
+                   "_search":"false",
+                   "rows":"20",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+GongGongFuZaChangSuo={
+                      "name":None
+                      }
+
+delGongGongFuZaChangSuo={
+                      "locationIds":"",
+                      }
+
+addTeZhongHangYe={
+                  "ty":"",
+                  "mode":"",
+                  "modeType":"",
+                  "organizationId":"",
+                  "specialTrade.organization.id":"",
+                  "specialTrade.id":"",
+                  "specialTrade.imgUrl":"",
+                  "specialTrade.organization.orgName":"",
+                  "specialTrade.name":"",
+                  "specialTrade.address":"",
+                  "specialTrade.personLiable":"",
+                  "specialTrade.personLiableTelephone":"",
+                  "specialTrade.type.id":"",
+                  "specialTrade.personLiableMobileNumber":"",
+                  "specialTrade.legalPerson":"",
+                  "specialTrade.mobileNumber":"",
+                  "specialTrade.telephone":"",
+                  "specialTrade.specialTradeLicense":"",
+                  "specialTrade.businessLicense":"",
+                  "specialTrade.availableDate":"",
+                  "specialTrade.specialTradeTelephone":"",
+                  "specialTrade.fax":"",
+                  "specialTrade.hiddenCases":"",
+                  "specialTrade.hiddenRectification":"",
+                  "specialTrade.remark":""
+                  }
+
+getTeZhongHangYe={
+                   "organizationId":"",
+                   "location.isEmphasis":"false",
+                   "_search":"false",
+                   "rows":"20",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+TeZhongHangYe={
+                      "name":None
+                      }
+
+delTeZhongHangYe={
+                      "locationIds":"",
+                      }
+
+addQiTaChangSuo={
+               "mode":"",
+               "otherLocale.imgUrl":"",
+               "organization.id":"",
+               "otherLocale.id":"",
+               "isSubmit":"",
+               "orgName":"",
+               "otherLocale.name":"",
+               "otherLocale.address":"",
+               "otherLocale.type.id":"",
+               "otherLocale.attentionExtent.id":"",
+               "otherLocale.contactPerson":"",
+               "otherLocale.telephone":"",
+               "otherLocale.mobileNumber":"",
+               "otherLocale.remark":""
+               }
+
+UpdateQiTaChangSuo={
+               "mode":"",
+               "otherLocale.imgUrl":"",
+               "organization.id":"",
+               "otherLocale.id":"",
+               "isSubmit":"",
+               "orgName":"",
+               "otherLocale.name":"",
+               "otherLocale.address":"",
+               "otherLocale.type.id":"",
+               "otherLocale.attentionExtent.id":"",
+               "otherLocale.contactPerson":"",
+               "otherLocale.telephone":"",
+               "otherLocale.mobileNumber":"",
+               "otherLocale.remark":""
+               }
+
+getQiTaChangSuo={
+                   "orgId":"",
+                   "location.isEmphasis":"0",
+                   "_search":"false",
+                   "rows":"20",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc",
+                   "keyType":""
+                   }
+
+QiTaChangSuo={
+                      "name":None,
+                      "organization":None
+                      }
+
+delQiTaChangSuo={
+                      "enterPriseIds":"",
+                      "schoolIds":"",
+                      "otherLocaleIds":""
+                      }
+
+addSheHuiZuZhi={
+                "mode":"",
+                "keyType":"",
+                "organization.id":"",
+                "newSocietyOrganizations.imgUrl":"",
+                "newSocietyOrganizations.id":"",
+                "placeTypeName":"",
+                "isSubmit":"",
+                "newSocietyOrganizations.gisInfo.buildingId":"",
+                "newSocietyOrganizations.gisInfo.centerX":"",
+                "newSocietyOrganizations.gisInfo.centerY":"",
+                "orgName":"",
+                "newSocietyOrganizations.name":"",
+                "newSocietyOrganizations.address":"",
+                "newSocietyOrganizations.mainResponsibilities":"",
+                "newSocietyOrganizations.type.id":"",
+                "newSocietyOrganizations.subType.id":"",
+                "newSocietyOrganizations.legalPerson":"",
+                "newSocietyOrganizations.legalPersonTelephone":"",
+                "newSocietyOrganizations.legalPersonMobileNumber":"",
+                "newSocietyOrganizations.chargeUnit":"",
+                "newSocietyOrganizations.registrationNumber":"",
+                "newSocietyOrganizations.validityStartDate":"",
+                "newSocietyOrganizations.validityEndDate":"",
+                "newSocietyOrganizations.personNum":"",
+                "newSocietyOrganizations.partyNum":"",
+                "newSocietyOrganizations.introduction":"",
+                "newSocietyOrganizations.honor":"",
+                "newSocietyOrganizations.remark":""
+                }
+
+updateSheHuiZuZhi={
+                "mode":"",
+                "keyType":"",
+                "organization.id":"",
+                "newSocietyOrganizations.imgUrl":"",
+                "newSocietyOrganizations.id":"",
+                "placeTypeName":"",
+                "isSubmit":"",
+                "newSocietyOrganizations.gisInfo.buildingId":"",
+                "newSocietyOrganizations.gisInfo.centerX":"",
+                "newSocietyOrganizations.gisInfo.centerY":"",
+                "orgName":"",
+                "newSocietyOrganizations.name":"",
+                "newSocietyOrganizations.address":"",
+                "newSocietyOrganizations.mainResponsibilities":"",
+                "newSocietyOrganizations.type.id":"",
+                "newSocietyOrganizations.legalPerson":"",
+                "newSocietyOrganizations.legalPersonTelephone":"",
+                "newSocietyOrganizations.legalPersonMobileNumber":"",
+                "newSocietyOrganizations.chargeUnit":"",
+                "newSocietyOrganizations.registrationNumber":"",
+                "newSocietyOrganizations.validityStartDate":"",
+                "newSocietyOrganizations.validityEndDate":"",
+                "newSocietyOrganizations.personNum":"",
+                "newSocietyOrganizations.partyNum":"",
+                "newSocietyOrganizations.introduction":"",
+                "newSocietyOrganizations.honor":"",
+                "newSocietyOrganizations.remark":""
+                }
+
+getSheHuiZuZhi={
+                   "organizationId":"",
+                   "location.isEmphasis":"false",
+                   "_search":"false",
+                   "rows":"20",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+SheHuiZuZhi={
+                      "name":None,
+                      "organization":None
+                      }
+
+delSheHuiZuZhi={
+                      "locationIds":"",
+                      }
+
+addXinJingJiZuZhi={
+                 "mode":"",
+                 "newEconomicOrganizationsDomain.imgUrl":"",
+                 "newEconomicOrganizationsDomain.id":"",
+                 "newEconomicOrganizationsDomain.organization.id":"",
+                 "newEconomicOrganizationsDomain.organization.orgName":"",
+                 "newEconomicOrganizationsDomain.name":"",
+                 "newEconomicOrganizationsDomain.residence":"",
+                 "newEconomicOrganizationsDomain.licenseNumber":"",
+                 "newEconomicOrganizationsDomain.validityStartDate":"",
+                 "newEconomicOrganizationsDomain.validityEndDate":"",
+                 "newEconomicOrganizationsDomain.style.id":"",
+                 "newEconomicOrganizationsDomain.chief":"",
+                 "newEconomicOrganizationsDomain.mobileNumber":"",
+                 "newEconomicOrganizationsDomain.telephone":"",
+                 "newEconomicOrganizationsDomain.foxNumber":"",
+                 "newEconomicOrganizationsDomain.area":"",
+                 "newEconomicOrganizationsDomain.employeeNumber":"",
+                 "newEconomicOrganizationsDomain.partyMemberNumber":"",
+                 "newEconomicOrganizationsDomain.introduction":"",
+                 "newEconomicOrganizationsDomain.honor":"",
+                 "newEconomicOrganizationsDomain.remark":"",
+                 "isSubmit":""
+                 }
+
+updateXinJingJiZuZhi={
+                 "mode":"",
+                 "newEconomicOrganizationsDomain.imgUrl":"",
+                 "newEconomicOrganizationsDomain.id":"",
+                 "newEconomicOrganizationsDomain.organization.id":"",
+                 "newEconomicOrganizationsDomain.organization.orgName":"",
+                 "newEconomicOrganizationsDomain.name":"",
+                 "newEconomicOrganizationsDomain.residence":"",
+                 "newEconomicOrganizationsDomain.licenseNumber":"",
+                 "newEconomicOrganizationsDomain.validityStartDate":"",
+                 "newEconomicOrganizationsDomain.validityEndDate":"",
+                 "newEconomicOrganizationsDomain.style.id":"",
+                 "newEconomicOrganizationsDomain.chief":"",
+                 "newEconomicOrganizationsDomain.mobileNumber":"",
+                 "newEconomicOrganizationsDomain.telephone":"",
+                 "newEconomicOrganizationsDomain.foxNumber":"",
+                 "newEconomicOrganizationsDomain.area":"",
+                 "newEconomicOrganizationsDomain.employeeNumber":"",
+                 "newEconomicOrganizationsDomain.partyMemberNumber":"",
+                 "newEconomicOrganizationsDomain.introduction":"",
+                 "newEconomicOrganizationsDomain.honor":"",
+                 "newEconomicOrganizationsDomain.remark":"",
+                 "isSubmit":""
+                 }
+
+getXinJingJiZuZhi={
+                   "organizationId":"",
+                   "searchNewEconomicOrganizationsVo.isEmphasis":"0",
+                   "_search":"false",
+                   "rows":"20",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+XinJingJiZuZhi={
+                      "name":None,
+                      "organization":None
+                      }
+
+delXinJingJiZuZhi={
+                      "newEconomicOrganizationsIds":"",
+                      }
+
+addGuiShangQiYe={
+                 "modeType":"",
+                 "mode":"",
+                 "ownerOrg.id":"",
+                 "enterprise.id":"",
+                 "enterprise.imgUrl":"",
+                 "enterprise.keyType":"",
+                 "placeTypeName":"",
+                 "isSubmit":"",
+                 "orgName":"",
+                 "enterprise.name":"",
+                 "enterprise.address":"",
+                 "enterprise.legalPerson":"",
+                 "enterprise.attentionExtent.id":"",
+                 "enterprise.registeredCapital":"",
+                 "enterprise.industry.id":"",
+                 "enterprise.area":"",
+                 "enterprise.employeeAmount":"",
+                 "enterprise.partyMemberAmount":"",
+                 "enterprise.enterpriseTelephone":"",
+                 "enterprise.fax":"",
+                 "enterprise.telephone":"",
+                 "enterprise.mobileNumber":"",
+                 "enterprise.businessLicense":"",
+                 "enterprise.hiddenCases":"",
+                 "enterprise.hiddenRectification":"",
+                 "enterprise.remark":""
+                 }
+
+updateGuiShangQiYe={
+                 "modeType":"",
+                 "mode":"",
+                 "ownerOrg.id":"",
+                 "enterprise.id":"",
+                 "enterprise.imgUrl":"",
+                 "enterprise.keyType":"",
+                 "placeTypeName":"",
+                 "isSubmit":"",
+                 "orgName":"",
+                 "enterprise.name":"",
+                 "enterprise.address":"",
+                 "enterprise.legalPerson":"",
+                 "enterprise.attentionExtent.id":"",
+                 "enterprise.registeredCapital":"",
+                 "enterprise.industry.id":"",
+                 "enterprise.area":"",
+                 "enterprise.employeeAmount":"",
+                 "enterprise.partyMemberAmount":"",
+                 "enterprise.enterpriseTelephone":"",
+                 "enterprise.fax":"",
+                 "enterprise.telephone":"",
+                 "enterprise.mobileNumber":"",
+                 "enterprise.businessLicense":"",
+                 "enterprise.hiddenCases":"",
+                 "enterprise.hiddenRectification":"",
+                 "enterprise.remark":""
+                 }
+
+getGuiShangQiYe={
+                   "orgId":"",
+                   "location.isEmphasis":"0",
+                   "_search":"false",
+                   "keyType":"enterpriseKey",
+                   "rows":"200",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+GuiShangQiYe={
+                      "address":None,
+                      "name":None
+                      }
+
+delGuiShangQiYe={
+                      "enterPriseIds":"",
+                      "schoolIds":"",
+                      "otherLocaleIds":""
+                      }
+
+addGuiXiaQiYe={
+               "modeType":"",
+               "mode":"",
+               "ownerOrg.id":"",
+               "enterprise.id":"",
+               "enterprise.imgUrl":"",
+               "enterprise.keyType":"",
+               "placeTypeName":"",
+               "isSubmit":"",
+               "orgName":"",
+               "enterprise.name":"",
+               "enterprise.address":"",
+               "enterprise.legalPerson":"",
+               "enterprise.attentionExtent.id":"",
+               "enterprise.registeredCapital":"",
+               "enterprise.industry.id":"",
+               "enterprise.area":"",
+               "enterprise.employeeAmount":"",
+               "enterprise.partyMemberAmount":"",
+               "enterprise.enterpriseTelephone":"",
+               "enterprise.fax":"",
+               "enterprise.telephone":"",
+               "enterprise.mobileNumber":"",
+               "enterprise.businessLicense":"",
+               "enterprise.hiddenCases":"",
+               "enterprise.hiddenRectification":"",
+               "enterprise.remark":""
+               }
+
+UpdateGuiXiaQiYe={
+               "modeType":"",
+               "mode":"",
+               "ownerOrg.id":"",
+               "enterprise.id":"",
+               "enterprise.imgUrl":"",
+               "enterprise.keyType":"",
+               "placeTypeName":"",
+               "isSubmit":"",
+               "orgName":"",
+               "enterprise.name":"",
+               "enterprise.address":"",
+               "enterprise.legalPerson":"",
+               "enterprise.attentionExtent.id":"",
+               "enterprise.registeredCapital":"",
+               "enterprise.industry.id":"",
+               "enterprise.area":"",
+               "enterprise.employeeAmount":"",
+               "enterprise.partyMemberAmount":"",
+               "enterprise.enterpriseTelephone":"",
+               "enterprise.fax":"",
+               "enterprise.telephone":"",
+               "enterprise.mobileNumber":"",
+               "enterprise.businessLicense":"",
+               "enterprise.hiddenCases":"",
+               "enterprise.hiddenRectification":"",
+               "enterprise.remark":""
+               }
+
+
+getGuiXiaQiYe={
+                   "orgId":"",
+                   "location.isEmphasis":"0",
+                   "_search":"false",
+                   "keyType":"enterpriseDownKey",
+                   "rows":"200",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+GuiXiaQiYe={
+                      "address":None,
+                      "name":None
+                      }
+
+delGuiXiaQiYe={
+                      "enterPriseIds":"",
+                      "schoolIds":"",
+                      "otherLocaleIds":""
+                      }
+
+addWuZhengWuZhao={
+                  "keyType":"",
+                  "withoutPlace.enteringORimport":"",
+                  "withoutPlace.organization.id":"",
+                  "orgId":"",
+                  "mode":"",
+                  "withoutPlace.id":"",
+                  "withoutPlace.imgUrl":"",
+                  "orgName":"",
+                  "withoutPlace.proprietor":"",
+                  "withoutPlace.mobileNumber":"",
+                  "withoutPlace.operateAddress":"",
+                  "withoutPlace.findDate":"",
+                  "lawtypes":"",
+                  "withoutPlace.disposetype.id":""
+                  }
+
+addAnQuanShengChan={
+                  "keyType":"",
+                  "mode":"",
+                  "ownerOrg.id":"",
+                  "safeProductionEnterprise.id":"",
+                  "safeProductionEnterprise.imgUrl":"",
+                  "isSubmit":"",
+                  "orgName":"",
+                  "safeProductionEnterprise.name":"",
+                  "safeProductionEnterprise.address":"",
+                  "safeProductionEnterprise.legalPerson":"",
+                  "safeProductionEnterprise.type.id":"",
+                  "safeProductionEnterprise.safeProductiontype.id":"",
+                  "safeProductionEnterprise.mobileNumber":"",
+                  "safeProductionEnterprise.businessLicense":"",
+                  "safeProductionEnterprise.employeeAmount":"",
+                  "safeProductionEnterprise.gridPerson":""
+                  }
+
+updateAnQuanShengChan={
+                  "keyType":"",
+                  "mode":"",
+                  "ownerOrg.id":"",
+                  "safeProductionEnterprise.id":"",
+                  "safeProductionEnterprise.imgUrl":"",
+                  "isSubmit":"",
+                  "orgName":"",
+                  "safeProductionEnterprise.name":"",
+                  "safeProductionEnterprise.address":"",
+                  "safeProductionEnterprise.legalPerson":"",
+                  "safeProductionEnterprise.type.id":"",
+                  "safeProductionEnterprise.safeProductiontype.id":"",
+                  "safeProductionEnterprise.mobileNumber":"",
+                  "safeProductionEnterprise.businessLicense":"",
+                  "safeProductionEnterprise.employeeAmount":"",
+                  "safeProductionEnterprise.gridPerson":""
+                  }
+
+updateWuZhengWuZhao={
+                  "keyType":"",
+                  "withoutPlace.enteringORimport":"",
+                  "withoutPlace.organization.id":"",
+                  "orgId":"",
+                  "mode":"",
+                  "withoutPlace.id":"",
+                  "withoutPlace.imgUrl":"",
+                  "orgName":"",
+                  "withoutPlace.proprietor":"",
+                  "withoutPlace.mobileNumber":"",
+                  "withoutPlace.operateAddress":"",
+                  "withoutPlace.findDate":"",
+                  "lawtypes":"",
+                  "withoutPlace.disposetype.id":""
+                  }
+
+getWuZhengWuZhao={
+                   "orgId":"",
+                   "withoutPlaceVo.orgId":"",
+                   "_search":"false",
+                   "rows":"200",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+getAnQuanShengChan={
+                   "orgId":"",
+                   "rows":"200",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+getAnQuanShengChanQiYe={
+                   "orgId":"",
+                   "rows":"200",
+                   "_search":"false",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+WuZhengWuZhao={
+                      "proprietor":None,
+                      }
+
+AnQuanShengChan={
+                      "name":None,
+                      }
+
+delWuZhengWuZhao={
+                      "withoutPlaceIds":""
+                      }
+
+addGuanLiZhiAn={
+                "serviceMemberWithObject.memberId":"",
+                "serviceMemberWithObject.objectType":"",
+                "serviceMemberWithObject.objectName":"",
+                "serviceMemberWithObject.objectId":"",
+                "serviceMemberWithObject.teamMember":"",
+                "serviceMemberWithObject.onDuty":"",
+                "serviceMemberWithObject.teamId":"",
+                "serviceMemberWithObject.objectLogout":""
+                }
+
+getGuanLiZhiAn={
+                   "serviceMemberVo.objectType":"actualCompany",
+                   "serviceMemberVo.objectId":"",
+                   "serviceMemberVo.onDuty":"1",
+                   "serviceMemberVo.objectName":"",
+                   "_search":"false",
+                   "rows":"200",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"
+                   }
+
+GuanLiZhiAn={
+                      "memberName":None,
+                      "memberId":None
+                      }
+
+zhuanYi={
+         "orgId":"",
+         "toOrgId":"",
+         "ids":"",
+         "type":"actualCompany",
+         "isTransfer":""
+         }
+
+getzhuanYi={
+                   "organizationId":"",
+                   "location.isEmphasis":"false",
+                   "_search":"false",
+                   "rows":"200",
+                   "page":"1",
+                   "sidx":"id",
+                   "sord":"desc"            
+            }
+
+dataShiYouDanWei={
+                  "dataType":"",
+                  "templates":"",
+                  "startRow":"3",
+                  "enterpriseType":"",
+                  "isNew":"1",
+                  "reportTime":"",
+                  "yearDate":""
+                  }
+
+dldataShiYouDanWei={
+                    "organizationId":"",
+                    "location.isEmphasis":"false",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "sord":"desc",
+                    "pageOnly":"false"
+                    }
+
+dldataAnQuanShengChanZhongDian={
+                    "orgId":"",
+                    "location.isEmphasis":"0",
+                    "keyType":"safetyProductionKey",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataXiaoFangAnQuan={
+                    "orgId":"",
+                    "location.isEmphasis":"0",
+                    "keyType":"fireSafetyKey",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataZhiAnZhongDian={
+                    "orgId":"",
+                    "location.isEmphasis":"0",
+                    "keyType":"securityKey",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataXueXiao={
+                    "orgId":"",
+                    "location.isEmphasis":"0",
+                    "keyType":"",
+                    "school.chineseName":"",
+                    "school.kind.id":"",
+                    "school.type.id":"",
+                    "school.address":"",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataYiYuan={
+                    "organizationId":"",
+                    "location.isEmphasis":"false",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataWeiXianHuaXuePing={
+                    "organizationId":"",
+                    "location.isEmphasis":"false",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataShangWanFuWu={
+                    "organizationId":"",
+                    "location.isEmphasis":"false",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataGongGongChangSuo={
+                    "organizationId":"",
+                    "location.isEmphasis":"false",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataGongGongFuZaChangSuo={
+                    "organizationId":"",
+                    "location.isEmphasis":"false",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataTeZhongHangYe={
+                    "organizationId":"",
+                    "location.isEmphasis":"false",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataQiTaChangSuo={
+                    "orgId":"",
+                    "location.isEmphasis":"0",
+                    "keyType":"",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataSheHuiZuZhi={
+                    "organizationId":"",
+                    "location.isEmphasis":"false",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataXinJingJiZuZhi={
+                    "organizationId":"",
+                    "searchNewEconomicOrganizationsVo.isEmphasis":"0",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataGuiShangQiYe={
+                    "orgId":"",
+                    "location.isEmphasis":"0",
+                    "keyType":"enterpriseKey",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+
+dldataGuiXiaQiYe={
+                    "orgId":"",
+                    "location.isEmphasis":"0",
+                    "keyType":"enterpriseDownKey",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataWuZhengWuZhao={
+                    "orgId":"",
+                    "withoutPlaceVo.orgId":"",
+                    "_search":"false",
+                    "rows":"20",
+                    "page":"1",
+                    "sidx":"id",
+                    "pageOnly":"false",
+                    "sord":"desc"
+                    }
+
+dldataAnQuanShengChan={
+                    "orgId":"",
+                    "page":"1",
+                    "_search":"false",
+                    "rows":"20",
+                    "sidx":"id",
+                    "sord":"desc",
+                    "pageOnly":"false"
+                    }
+
+
+getXunChangQingKuang={
+                      "serviceRecordVo.displayLevel":"sameGrade",
+                      "serviceRecordVo.organization.id":"",
+                      "serviceRecordVo.displayYear":time.strftime("%Y"),
+                      "rows":"200",
+                      "page":"1",
+                      "sidx":"id",
+                      "_search":"false",
+                      "sord":"desc"
+                      }
